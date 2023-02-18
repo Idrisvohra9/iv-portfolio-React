@@ -1,9 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import backgroundImg from "./Images/ColorBackground.webp";
-import reefs from "./Images/ForegroundReefs.webp";
-import fishes from "./Images/Fishes.webp";
-import turtle from "./Images/turtle.webp";
-import tentacles from "./Images/tentacles.webp";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -16,9 +11,8 @@ export default function Header() {
     let scroll = setInterval(() => {
       window.scrollY++;
       window.scrollTo(0, window.scrollY);
-      if (window.scrollY === window.innerHeight) {
+      if (window.scrollY === window.innerHeight-5) {
         clearInterval(scroll);
-        console.log("Cleared");
         url.current.click();
       }
     }, 2);
@@ -38,32 +32,32 @@ export default function Header() {
     <>
       <header>
         <img
-          src={backgroundImg}
+          src={require("./Images/ColorBackground.webp")}
           alt=""
           className="parallax-image img-fluid background"
           loading="lazy"
         />
         <img
-          src={reefs}
+          src={require("./Images/ForegroundReefs.webp")}
           alt=""
           className="parallax-image img-fluid reefs"
           loading="lazy"
         />
         <img
-          src={fishes}
+          src={require("./Images/Fishes.webp")}
           alt=""
           className="parallax-image img-fluid fishes"
           loading="lazy"
         />
         <img
-          src={turtle}
+          src={require("./Images/turtle.webp")}
           alt=""
           className="img-fluid turtle"
           loading="lazy"
           ref={turt}
         />
         <img
-          src={tentacles}
+          src={require("./Images/tentacles.webp")}
           alt=""
           className="parallax-image img-fluid tentacles"
           loading="lazy"

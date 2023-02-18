@@ -1,12 +1,12 @@
 import React from "react";
-import youtube from "./Images/youtube.svg";
-import instagram from "./Images/instagram.svg";
-import github from "./Images/github.svg";
-import octopus from "./Images/octopus.svg";
-import twitter from "./Images/twitter.svg";
-import linkedin from "./Images/linkedin.svg";
+import youtube from "../Images/youtube.svg";
+import instagram from "../Images/instagram.svg";
+import github from "../Images/github.svg";
+import octopus from "../Images/octopus.svg";
+import twitter from "../Images/twitter.svg";
+import linkedin from "../Images/linkedin.svg";
 
-import idris from "./Images/Idris.jpg";
+import idris from "../Images/Idris.jpg";
 
 export default function ProfileComp() {
   return (

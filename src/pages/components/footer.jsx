@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "./Images/logo1.png";
-import youtube from "./Images/youtube.svg";
-import instagram from "./Images/instagram.svg";
-import github from "./Images/github.svg";
-import octopus from "./Images/octopus.svg";
-import twitter from "./Images/twitter.svg";
-import linkedin from "./Images/linkedin.svg";
+import logo from "../Images/logo1.png";
+import youtube from "../Images/youtube.svg";
+import instagram from "../Images/instagram.svg";
+import github from "../Images/github.svg";
+import octopus from "../Images/octopus.svg";
+import twitter from "../Images/twitter.svg";
+import linkedin from "../Images/linkedin.svg";
 
 export default function Footer() {
   return (

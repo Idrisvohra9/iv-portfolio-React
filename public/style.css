@@ -7,7 +7,7 @@
 }
 
 html {
-    scroll-padding-top: 35px;
+    scroll-padding-top: 55px;
 }
 
 #root {
@@ -37,17 +37,17 @@ body {
 }
 
 
-.main::-webkit-scrollbar {
+body::-webkit-scrollbar {
     display: block;
     width: 8px;
     background-color: var(--tertiary-clr);
 }
 
-.main::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
     background-color: var(--primary-clr);
 }
 
-.main::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover {
     background-color: #080f1d;
 }
 
@@ -59,13 +59,15 @@ header {
     z-index: 1000;
 }
 
-.spacer{
+.spacer {
     width: 100vw;
     height: 50vh;
 }
+
+/* 
 body::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .reefs {
     width: 100%;
@@ -216,7 +218,7 @@ body::-webkit-scrollbar {
     font-size: 72px;
     position: absolute;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     top: 220px;
     z-index: 2;
 }
@@ -292,14 +294,16 @@ h1 {
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
-.autoType{
+.autoType {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
-.autoType b{
+
+.autoType b {
     margin-left: 7px;
 }
+
 .autoType::after {
     content: " ";
     width: 8px;
@@ -330,12 +334,13 @@ nav.IV-nav {
     position: fixed;
     height: auto;
     z-index: 10;
+    perspective: 300px;
     background-color: #69b4c393;
     backdrop-filter: blur(10px) saturate(3);
     border-radius: 0 0 50% 50%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 10px 0 #69b4c393, -10px 0 #69b4c393;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
-
 
 nav.IV-nav a {
     color: var(--secondary-clr);
@@ -346,16 +351,14 @@ nav.IV-nav a {
 nav.IV-nav ul {
     padding: 0;
     list-style: none;
-
 }
 
 nav.IV-nav li {
     padding-top: 5px;
     overflow: hidden;
-
 }
 
-.profile-content {
+.content-main {
     position: relative;
 }
 
@@ -410,7 +413,7 @@ h5 {
 
 }
 
-.profile-content {
+.content-main {
     width: 78vw;
     margin-left: 22vw;
     margin-right: 2vw;
@@ -418,9 +421,10 @@ h5 {
 
 section {
     min-height: 100vh;
+    background-color: transparent;
 }
 
-.profile-content section div {
+.content-main section div {
     font-size: 26px;
     margin: 10px 0 20px 0px;
 }
@@ -459,10 +463,9 @@ a:hover {
 
 .main {
     padding-top: 65px;
-    height:100vh;
-    overflow-y: scroll;
+    height: 100vh;
     animation-name: blink;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-timing-function: ease-in;
 }
 
@@ -485,23 +488,173 @@ a:hover {
     font-size: 20px;
 }
 
-.IV-footer h5{
+.IV-footer h5 {
     color: var(--primary-clr);
     font-weight: bold;
 }
 
-.IV-footer a{
+.IV-footer a {
     cursor: pointer;
     background-color: transparent;
     color: var(--primary-clr);
 }
 
-.IV-footer a:hover{
+.IV-footer a:hover {
     text-decoration: underline aliceblue;
 }
 
-.IV-footer img{
+.IV-footer img {
     width: 25px;
     height: 25px;
     margin-right: 8px;
+}
+
+.container-fluid {
+    background: transparent;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    overflow: hidden;
+}
+
+.ocean {
+    height: 5%;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #015871;
+    background-attachment: fixed;
+}
+
+.wave {
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+    position: absolute;
+    top: -198px;
+    width: 6400px;
+    height: 198px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+    top: -175px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite,
+        swell 7s ease -1.25s infinite;
+    opacity: 1;
+}
+
+@keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+
+    100% {
+        margin-left: -1600px;
+    }
+}
+
+@keyframes swell {
+
+    0%,
+    100% {
+        transform: translate3d(0, -25px, 0);
+    }
+
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+.container-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 12;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    padding-top: 130px;
+    padding-bottom: 153px;
+    background-color: var(--primary-clr);
+}
+
+.container-admin tr,
+td {
+    padding: 20px;
+}
+
+.container-admin h4 {
+    color: var(--primary-clr);
+}
+
+.container-admin .btn {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--tertiary-clr);
+}
+
+.container-admin form {
+    background-color: rgba(255, 255, 255, 0.59);
+    backdrop-filter: blur(16px) saturate(180%);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.container-admin input[type="text"],
+input[type="password"] {
+    text-align: center;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+}
+
+a .icon {
+    width: 22px;
+    height: 22px;
+}
+a .icon-inner {
+    width: 28px;
+    height: 28px;
+}
+h1{
+    display: flex;
+    align-items: center;
+}
+h1 .icon-outer {
+    width: 46px;
+    height: 46px;
+}
+
+.social img{
+    width: 30px;
+    height: 30px;
+}
+.content-main .card.project {
+    background-color: var(--secondary-clr);
+}
+.content-main .card.project div{
+    margin: 0;
+}
+.content-main .card.project a {
+    color: var(--primary-clr);
+    display: block;
+    font-size: 28px;
+}
+
+.content-main .card.project .card-body {
+    color: #0f1b33;
+}
+
+.content-main .card.project .io_images {
+    width: 50%;
+    height: auto;
+    object-fit: contain;
 }
