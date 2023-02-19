@@ -8,7 +8,7 @@ import css from "./Images/css.svg";
 import js from "./Images/js.svg";
 import html from "./Images/html.svg";
 import react from "./Images/react.svg"
-import pJSON from "../Projects.json";
+import pJSON from "./components/Projects.json";
 
 export default function Projects() {
   function getProjectsByLang(lang) {
@@ -87,7 +87,7 @@ export default function Projects() {
             <h1>
               Python <img src={py} alt="" className="icon-outer ms-2" />
             </h1>
-            <Project />
+            {getProjectsByLang("python").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="css">
             <h1>

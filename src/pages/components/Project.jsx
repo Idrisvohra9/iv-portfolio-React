@@ -1,12 +1,12 @@
 import React from "react";
-import github from "../Images/github.svg";
+import git from "../Images/github.svg";
 export default function Project({
   title,
-  desc,
+  description,
+  note,
   io_images,
   htmlId,
-  github_url,
-  note,
+  github,
 }) {
   return (
     <div className="card project">
@@ -18,31 +18,31 @@ export default function Project({
       <div id={`${htmlId}`} className="collapse">
         <div className="card-body">
           <h4>Description:</h4>
-          <div>{desc}</div>
+          <div>{description}</div>
           {note.length > 0 ? (
-            <div>
+            <div className="mt-3">
               <b>Note:</b> {note}
             </div>
           ) : (
             ""
           )}
-          <h4>I/O Screen Shots:</h4>
-          {io_images.map((img) => {
-            return <img src={img} alt="" className="img-fluid io_images" />;
+          <h4 className="mt-3">I/O Screen Shots:</h4>
+          {io_images.map((img, i) => {
+            return <img src={require("."+img)} alt="" className="img-fluid io_images" key={i} loading="lazy"/>
           })}
         </div>
         <div className="w-100 d-flex justify-content-end align-items-center pe-3 text-dark">
-          {github_url.length > 0 ? 
+          {github.length > 0 ? (
             <a
-              href={github_url}
+              href={github}
               style={{ background: "transparent" }}
               title="Open Source code in Github"
             >
-              <img src={github} alt="" className="icon-inner" />
+              <img src={git} alt="" className="icon-inner" />
             </a>
-           : 
+          ) : (
             "Private Project"
-          }
+          )}
         </div>
       </div>
     </div>
@@ -51,9 +51,9 @@ export default function Project({
 
 Project.defaultProps = {
   title: "Project Title",
-  desc: "Some description",
+  description: "Some description",
   io_images: [],
   htmlId: "SomeId",
-  github_url: "",
+  github: "",
   note: "",
 };
