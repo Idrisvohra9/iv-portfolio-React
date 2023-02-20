@@ -8,8 +8,11 @@ import qrCode from "./Images/QRCODE.webp";
 import AutoTyper from "./components/autoTyper";
 
 export default function Profile() {
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
   return (
-    <div className="d-flex flex-lg-row main">
+    <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
       <div className="nav-scrollspy">
         <ProfileComp />
         <a href="#start" data-to-scrollspy-id="start">

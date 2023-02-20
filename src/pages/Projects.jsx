@@ -17,8 +17,11 @@ export default function Projects() {
       return p.lang === lang;
     });
   }
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
   return (
-    <div className="d-flex flex-lg-row main">
+    <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
       <div className="nav-scrollspy">
         <ProfileComp />
         <a href="#overview-proj" data-to-scrollspy-id="overview-proj">
@@ -93,13 +96,13 @@ export default function Projects() {
             <h1>
               CSS <img src={css} alt="" className="icon-outer ms-2" />
             </h1>
-            <Project />
+            {getProjectsByLang("css").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="js">
             <h1>
               JavaScript <img src={js} alt="" className="icon-outer ms-2" />
             </h1>
-            <Project />
+            {getProjectsByLang("js").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="mixed-vanilla">
             <h1>
@@ -107,25 +110,25 @@ export default function Projects() {
               <img src={css} alt="" className="icon-outer ms-2" />{" "}+
               <img src={js} alt="" className="icon-outer ms-2" />
             </h1>
-            <Project />
+            {getProjectsByLang("mixed-vanilla").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="react">
             <h1>
               React <img src={react} alt="" className="icon-outer ms-2" />
             </h1>
-            <Project />
+            {getProjectsByLang("react").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="react-native">
             <h1>
               React Native <img src={react} alt="" className="icon-outer ms-2" />
             </h1>
-            <Project />
+            {getProjectsByLang("react-native").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="other">
             <h1>
               Other
             </h1>
-            <Project />
+            {getProjectsByLang("other").map((props, i) => <Project {...props} key={i} />)}
           </section>
           <section id="end">
             <Footer />

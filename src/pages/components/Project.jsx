@@ -28,7 +28,15 @@ export default function Project({
           )}
           <h4 className="mt-3">I/O Screen Shots:</h4>
           {io_images.map((img, i) => {
-            return <img src={require("."+img)} alt="" className="img-fluid io_images" key={i} loading="lazy"/>
+            return (
+              <img
+                src={require("." + img)}
+                alt=""
+                className="img-fluid io_images"
+                key={i}
+                loading="lazy"
+              />
+            );
           })}
         </div>
         <div className="w-100 d-flex justify-content-end align-items-center pe-3 text-dark">
@@ -37,8 +45,10 @@ export default function Project({
               href={github}
               style={{ background: "transparent" }}
               title="Open Source code in Github"
+              className="d-flex justify-content-evenly align-items-center"
             >
-              <img src={git} alt="" className="icon-inner" />
+              <b>Open in Github</b>
+              <img src={git} alt="" className="icon-inner ms-2" />
             </a>
           ) : (
             "Private Project"

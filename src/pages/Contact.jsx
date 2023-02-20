@@ -7,8 +7,11 @@ import gmail from "./Images/gmail.svg";
 import insta from "./Images/instagram.svg";
 
 export default function Contact() {
+  function scrollToTop() {
+    window.scrollTo(0, 0);
+  }
   return (
-    <div className="main">
+    <div className="main" onLoad={scrollToTop}>
       <div className="container-fluid">
         <div className="ocean">
           <div className="wave"></div>
