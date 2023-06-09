@@ -1,13 +1,8 @@
 import React from "react";
 import git from "../Images/github.svg";
-export default function Project({
-  title,
-  description,
-  note,
-  io_images,
-  htmlId,
-  github,
-}) {
+import cp from "../Images/codepen.svg";
+import DOMPurify from "dompurify";
+export default function Project({ title, projBody, htmlId, github, codepen }) {
   return (
     <div className="card project">
       <div className="card-header">
@@ -17,42 +12,38 @@ export default function Project({
       </div>
       <div id={`${htmlId}`} className="collapse">
         <div className="card-body">
-          <h4>Description:</h4>
-          <div>{description}</div>
-          {note.length > 0 ? (
-            <div className="mt-3">
-              <b>Note:</b> {note}
-            </div>
-          ) : (
-            ""
-          )}
-          <h4 className="mt-3">I/O Screen Shots:</h4>
-          {io_images.map((img, i) => {
-            return (
-              <img
-                src={require("." + img)}
-                alt=""
-                className="img-fluid io_images"
-                key={i}
-                loading="lazy"
-              />
-            );
-          })}
+          <h4>Project Description:</h4>
+          <div
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(projBody) }}
+          ></div>
         </div>
         <div className="w-100 d-flex justify-content-end align-items-center pe-3 text-dark">
-          {github.length > 0 ? (
-            <a
-              href={github}
-              style={{ background: "transparent" }}
-              title="Open Source code in Github"
-              className="d-flex justify-content-evenly align-items-center"
-            >
-              <b>Open in Github</b>
-              <img src={git} alt="" className="icon-inner ms-2" />
-            </a>
-          ) : (
-            "Private Project"
-          )}
+          <div className="btn btn-primary p-2 rounded-2 d-flex justify-content-evenly">
+            {github.length > 0 ? (
+              <a
+                href={github}
+                style={{ background: "transparent" }}
+                className="d-flex justify-content-evenly align-items-center"
+                title="Open In Github"
+              >
+                <img src={git} alt="Github Icon" className="icon-inner" />
+              </a>
+            ) : (
+              "Private Project"
+            )}
+            {codepen.length > 0 ? (
+              <a
+                href={codepen}
+                style={{ background: "transparent" }}
+                className="d-flex justify-content-evenly align-items-center ms-2"
+                title="Open In Codepen"
+              >
+                <img src={cp} alt="Codepen Icon" className="icon-inner" />
+              </a>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -65,5 +56,6 @@ Project.defaultProps = {
   io_images: [],
   htmlId: "SomeId",
   github: "",
+  codepen: "",
   note: "",
 };

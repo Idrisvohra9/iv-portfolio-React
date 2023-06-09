@@ -36,7 +36,7 @@ export default function Contact() {
           <div className="content-main">
             <Scrollspy>
               <section id="whats">
-                <h1>Whatsapp me😉</h1>
+                <h1>Whatsapp me</h1>
                 <div>
                   Click to message me{" "}
                   <a href="https://wa.me/919106930717" className="btn btn-dark social">

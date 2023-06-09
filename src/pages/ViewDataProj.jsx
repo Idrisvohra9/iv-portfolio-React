@@ -1,38 +1,32 @@
 import React, { useEffect, useState } from "react";
-import Footer from "./components/footer";
-import Scrollspy from "react-ui-scrollspy";
 import Project from "./components/Project";
-import ProfileComp from "./components/ProfileComp";
 import py from "./Images/python.svg";
 import css from "./Images/css.svg";
 import js from "./Images/js.svg";
 import html from "./Images/html.svg";
 import react from "./Images/react.svg";
 import axios from "axios";
+import Scrollspy from "react-scrollspy";
 
-export default function Projects() {
+export default function ViewDataProj() {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND}projects`)
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.log(error));
+      .then(({ data }) => setProjects(data));
   }, []);
   function getProjectsByLang(lang) {
     return projects.filter((p) => {
       return p.lang === lang;
     });
   }
-  function scrollToTop() {
-    window.scrollTo(0, 0);
+  function deleteProject(id){
+    
   }
   return (
-    <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
+    <div className="d-flex flex-lg-row main">
       <div className="nav-scrollspy">
-        <ProfileComp />
-        <a href="#overview-proj" data-to-scrollspy-id="overview-proj">
-          Projects Overview
-        </a>
+        <h3>Manage projects</h3>
         <a href="#python" data-to-scrollspy-id="python">
           <div className="d-flex align-items-center justify-content-center">
             Python <img src={py} alt="python" className="icon ms-1" />
@@ -71,37 +65,67 @@ export default function Projects() {
             Other
           </div>
         </a>
-        <a href="#end" data-to-scrollspy-id="end">
-          End.
-        </a>
       </div>
       <div className="content-main">
         <Scrollspy>
-          <section id="overview-proj">
-            <h1>Projects Overview</h1>
-            <div>
-              In the list of projects portrayed here are done 100% by me.
-            </div>
-            <div>
-              If there are projects in here that are inspired by someone else's
-              work then I will be sure to put their reference.
-            </div>
-            <div>
-              <b>Note:</b> I have done many more projects in other languages,
-              the reason why I didn't mention them is because either I am not
-              that proud of them or I haven't enjoyed making them or I think
-              that they are too basic.
-            </div>
-          </section>
           <section id="python">
             <h1>
               Python <img src={py} alt="" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("python").length > 0
-              ? getProjectsByLang("python").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : "No projects"}
+            {getProjectsByLang("python").map((props, i) => (
+              <span className="d-flex" key={i}>
+                <Project {...props} key={props.id} />
+                <div className="d-flex align-self-start">
+                  <button className="btn btn-light ms-2" type="button">
+                    <svg
+                      viewBox="0 0 20 20"
+                      fill="black"
+                      width="30"
+                      height="30"
+                    >
+                      <g strokeWidth="0"></g>
+                      <g
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <path
+                          fill="#000000"
+                          fillRule="evenodd"
+                          d="M15.198 3.52a1.612 1.612 0 012.223 2.336L6.346 16.421l-2.854.375 1.17-3.272L15.197 3.521zm3.725-1.322a3.612 3.612 0 00-5.102-.128L3.11 12.238a1 1 0 00-.253.388l-1.8 5.037a1 1 0 001.072 1.328l4.8-.63a1 1 0 00.56-.267L18.8 7.304a3.612 3.612 0 00.122-5.106zM12 17a1 1 0 100 2h6a1 1 0 100-2h-6z"
+                        ></path>{" "}
+                      </g>
+                    </svg>
+                  </button>
+                  <button className="btn btn-light ms-2">
+                    <svg
+                      fill="#000000"
+                      viewBox="-2.94 0 31.716 31.716"
+                      width="30"
+                      height="30"
+                    >
+                      <g strokeWidth="0"></g>
+                      <g
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <g transform="translate(-355.957 -579)">
+                          {" "}
+                          <path d="M376.515,610.716H361.231a2.361,2.361,0,0,1-2.358-2.359V584.1a1,1,0,0,1,2,0v24.255a.36.36,0,0,0,.358.359h15.284a.36.36,0,0,0,.358-.359V584.1a1,1,0,0,1,2,0v24.255A2.361,2.361,0,0,1,376.515,610.716Z"></path>{" "}
+                          <path d="M365.457,604.917a1,1,0,0,1-1-1v-14a1,1,0,0,1,2,0v14A1,1,0,0,1,365.457,604.917Z"></path>{" "}
+                          <path d="M372.29,604.917a1,1,0,0,1-1-1v-14a1,1,0,0,1,2,0v14A1,1,0,0,1,372.29,604.917Z"></path>{" "}
+                          <path d="M380.79,585.1H356.957a1,1,0,0,1,0-2H380.79a1,1,0,0,1,0,2Z"></path>{" "}
+                          <path d="M372.79,581h-7.917a1,1,0,1,1,0-2h7.917a1,1,0,0,1,0,2Z"></path>{" "}
+                        </g>{" "}
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </span>
+            ))}
           </section>
           <section id="css">
             <h1>
@@ -164,9 +188,6 @@ export default function Projects() {
                   <Project {...props} key={i} />
                 ))
               : "No projects"}
-          </section>
-          <section id="end">
-            <Footer />
           </section>
         </Scrollspy>
       </div>
