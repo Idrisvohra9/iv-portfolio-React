@@ -40,7 +40,7 @@ app.post('/admin/auth', (req, res) => {
 const projectsPath = "./Projects.json";
 
 // Route to handle project posting
-app.post("/projects", async (req, res) => {
+app.post("/project", async (req, res) => {
     const projData = req.body;
     try {
         var data = fs.readFileSync(projectsPath)
@@ -74,37 +74,52 @@ app.get("/projects", async (req, res) => {
 });
 
 // Route to get a singular project values for updation
-app.delete("/project", async (req, res) => {
+app.get("/project/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        var data = fs.readFileSync(projectsPath);
-        var object = await JSON.parse(data);
-        const project = object.filter((p) => p.id === id);
+        const object = await JSON.parse(fs.readFileSync(projectsPath));
+        // console.log(typeof id);
+        // console.log(object.find(obj => obj.id === Number(id)));
+        res.status(200).json(object.find(obj => obj.id === Number(id)));
     } catch (error) {
-
+        res.status(404).json({ error: error });
     }
 });
 
 // To delete a specific project
-app.delete("/project", async (req, res) => {
+app.delete("/project/:id", async (req, res) => {
     const { id } = req.params;
     try {
-        var data = fs.readFileSync(projectsPath);
-        var object = await JSON.parse(data);
+        const object = await JSON.parse(fs.readFileSync(projectsPath));
+        object.splice(object.findIndex(o => o.Id === id), 1);
 
+        fs.writeFile(projectsPath, JSON.stringify(object), err => {
+            // Check for error
+            if (err) throw err;
+            res.status(201).json(object);
+        });
     } catch (error) {
-
+        res.status(404).json({ error: error });
     }
 });
 
 // Update existing project
-app.patch("/project", async (req, res) => {
+app.patch("/project/:id", async (req, res) => {
     const { id } = req.params;
     const newProjData = req.body;
     try {
+        // First Get all Data
+        const obj = JSON.parse(fs.readFileSync(projectsPath));
+        // Filter and splice the old data according to id and insert the new one:
+        obj.splice(obj.findIndex(o => o.id === id), 1, { ...newProjData, id: id });
 
+        fs.writeFile(projectsPath, JSON.stringify(obj), err => {
+            // Check for error
+            if (err) throw err;
+            res.status(201).json({ success: true });
+        });
     } catch (error) {
-
+        res.status(404).json({ error: error });
     }
 });
 

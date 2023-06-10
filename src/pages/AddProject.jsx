@@ -25,6 +25,7 @@ const modules = {
   ], // Include button in toolbar
 };
 export default function AddProject() {
+  const { request } = useParams();
   const [projectData, setProjectData] = useState({
     title: "",
     projBody: "",
@@ -32,29 +33,38 @@ export default function AddProject() {
     htmlId: "",
     github: "",
     codepen: "",
+    skill: "beginner",
   });
-  const { request } = useParams();
-  const placeholder = request != "add" ? "update" : "add";
-  const id = request != "add" ? request : null;
+  const placeholder = request !== "add" ? "update" : "add";
+  const id = request !== "add" ? request : null;
   useEffect(() => {
-    if(placeholder === "update"){
-      axios.get(`${process.env.REACT_APP_BACKEND}project`)
+    if (placeholder === "update") {
+      // console.log("Update");
+      // Get the old values for updating
+      axios
+        .get(`${process.env.REACT_APP_BACKEND}project/${id}`)
+        .then(({data}) => setProjectData(data))
+        .catch((err) => window.alert(err));
     }
-  }, []);
+  }, [id, placeholder]);
   const addProject = (e) => {
     e.preventDefault();
     if (request === "add") {
       axios
-        .post(`${process.env.REACT_APP_BACKEND}projects`, projectData)
-        .then((response) => {
-          console.log(response.data);
+        .post(`${process.env.REACT_APP_BACKEND}project`, projectData)
+        .then(() => {
+          window.location.reload();
         })
         .catch((err) => {
           window.alert(err);
         });
-    }
-    else{
-      // axios.
+    } else {
+      axios
+        .patch(`${process.env.REACT_APP_BACKEND}project/${id}`, projectData)
+        .then(({ success }) =>
+          success ? document.querySelector(".toast").classList.add("show") : ""
+        )
+        .catch((err) => window.alert(err));
     }
   };
   function createHtmlId(title = "") {
@@ -72,13 +82,37 @@ export default function AddProject() {
       <h1 className="mb-3">
         {placeholder} Project {id !== null ? "with id = " + id : ""}:
       </h1>
-      <form onSubmit={addProject} className="mb-2">
+      <form onSubmit={addProject} className="mb-2 container">
+        <div
+          className="toast align-items-center"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div className="d-flex">
+            <div className="toast-body">
+              The operation was successful click here to{" "}
+              <button
+                className="btn btn-dark"
+                onClick={() => window.location.reload()}
+              >
+                Reload
+              </button>
+            </div>
+            <button
+              type="button"
+              className="btn-close me-2 m-auto"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+        </div>
         <div className="input-group mb-3">
           <span className="input-group-text">Title*:</span>
           <input
             type="text"
             className="form-control"
-            value={projectData.title}
+            value={projectData?.title}
             onChange={(e) =>
               setProjectData({
                 ...projectData,
@@ -93,7 +127,7 @@ export default function AddProject() {
           <select
             className="form-select"
             aria-label="Default select example"
-            value={projectData.lang}
+            value={projectData?.lang}
             onChange={(e) =>
               setProjectData({ ...projectData, lang: e.target.value })
             }
@@ -107,13 +141,28 @@ export default function AddProject() {
             <option value="other">other</option>
           </select>
         </div>
+        <div className="input-group mb-3">
+          <span className="input-group-text">Skill*:</span>
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            value={projectData?.skill}
+            onChange={(e) =>
+              setProjectData({ ...projectData, skill: e.target.value })
+            }
+          >
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
         <div className="mb-3">
           <label htmlFor="post-body" className="form-label">
             Project Body*
           </label>
           <ReactQuill
             className="bg-light input"
-            value={projectData.projBody}
+            value={projectData?.projBody}
             onChange={(newValue) =>
               setProjectData({ ...projectData, projBody: newValue })
             }
@@ -125,7 +174,7 @@ export default function AddProject() {
           <input
             type="text"
             className="form-control"
-            value={projectData.github}
+            value={projectData?.github}
             onChange={(e) =>
               setProjectData({ ...projectData, github: e.target.value })
             }
@@ -137,7 +186,7 @@ export default function AddProject() {
           <input
             type="text"
             className="form-control"
-            value={projectData.codepen}
+            value={projectData?.codepen}
             onChange={(e) =>
               setProjectData({ ...projectData, codepen: e.target.value })
             }
@@ -147,7 +196,7 @@ export default function AddProject() {
           <input
             type="submit"
             className="btn btn-success"
-            value="Add Project"
+            value={request === "add" ? "Add Project" : "Update"}
           />
         </div>
       </form>

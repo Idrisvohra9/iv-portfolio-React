@@ -2,12 +2,19 @@ import React from "react";
 import git from "../Images/github.svg";
 import cp from "../Images/codepen.svg";
 import DOMPurify from "dompurify";
-export default function Project({ title, projBody, htmlId, github, codepen }) {
+export default function Project({
+  title,
+  projBody,
+  htmlId,
+  github,
+  codepen,
+  skill,
+}) {
   return (
     <div className="card project">
       <div className="card-header">
         <a className="btn" data-bs-toggle="collapse" href={`#${htmlId}`}>
-          {title}
+          {title} <span className="text-muted ms-1">[{skill}]</span>
         </a>
       </div>
       <div id={`${htmlId}`} className="collapse">
