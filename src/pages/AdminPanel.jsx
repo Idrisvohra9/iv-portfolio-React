@@ -1,11 +1,16 @@
 import React from "react";
 import { Outlet, NavLink, useParams } from "react-router-dom";
 import { getCookie, deleteCookie } from "../tools/cookies";
+import { Helmet } from "react-helmet";
 export default function AdminPanel() {
   const { token } = useParams();
   if (getCookie("token") === token)
     return (
       <div className="container mt-4">
+        <Helmet>
+        <title>Idris Vohra - Control Dashboard</title>
+        <meta name="description" content="Admin Panel for iv-portfolio."/>
+      </Helmet>
         <h1>Admin Panel</h1>
         <div className="d-flex justify-content-between">
           <h3>Welcome Idris Vohra!</h3>

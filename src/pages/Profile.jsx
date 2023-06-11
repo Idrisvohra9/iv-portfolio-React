@@ -6,13 +6,36 @@ import Footer from "./components/footer";
 import Stats from "./components/stats";
 import qrCode from "./Images/QRCODE.webp";
 import AutoTyper from "./components/autoTyper";
-
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 export default function Profile() {
   function scrollToTop() {
     window.scrollTo(0, 0);
   }
   return (
     <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
+      <Helmet>
+        <title>Idris Vohra - Profile</title>
+        <meta
+          name="description"
+          content="Webpage displaying the profile and realted information of Idris Vohra."
+        />
+        <meta
+          name="keywords"
+          content="Profile, Overview, Idris Vohra, Idris, iv-portfolio, HTML5, CSS, React, React Native, JavaScript, Web developer, Application developer"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="Idris Vohra" />
+        <meta name="twitter:title" content="Idris Vohra - Portfolio" />
+        <meta
+          name="twitter:description"
+          content="This is a portfolio website of Full stack MERN Web developer Idris Vohra."
+        />
+        <meta
+          name="twitter:image"
+          content="https://photos.app.goo.gl/ev1uhkPK6feYxmgb8"
+        />
+      </Helmet>
       <div className="nav-scrollspy">
         <ProfileComp />
         <a href="#start" data-to-scrollspy-id="start">
@@ -40,7 +63,7 @@ export default function Profile() {
           End.
         </a>
       </div>
-      <div className="content-main">
+      <main className="content-main">
         <Scrollspy>
           <section id="start">
             <Start />
@@ -58,11 +81,13 @@ export default function Profile() {
             </div>
             <div>
               I am a aspiring content creator and social media influencer on
-              various niche that may include personality development, philosophy, psychology and spirituality. I write blogs and books but haven't published any yet.
+              various niche that may include personality development,
+              philosophy, psychology and spirituality. I write blogs and books
+              but haven't published any yet.
             </div>
             <div>
-              I have done multiple kinds of <a href="/projects">projects</a> on the frameworks I
-              learned.
+              I have done multiple kinds of <a href="/projects">projects</a> on
+              the frameworks I learned.
             </div>
             <div>
               From which the favourite of mine are{" "}
@@ -96,8 +121,8 @@ export default function Profile() {
               >
                 GitHub
               </a>{" "}
-              profile and leave a follow, if any of my repositories are
-              helpful ⭐ them would be appreciated.
+              profile and leave a follow, if any of my repositories are helpful
+              ⭐ them would be appreciated.
             </div>
             <div>
               I have many plans for life and would love to get hired by a
@@ -210,13 +235,14 @@ export default function Profile() {
               have been through and know that I am going to improve than this.
             </div>
             <div className="container">
-              <Stats label="Python" percent={78} />
+              <Stats label="Python" percent={88} />
               <Stats label="Django" percent={86} />
               <Stats label="HTML" percent={98} color="darkorange" />
               <Stats label="CSS" percent={95} color="blue" />
               <Stats label="SCSS" percent={80} color="blue" />
               <Stats label="JS" percent={85} color="green" />
               <Stats label="React" percent={80} color="green" />
+              <Stats label="React Native" percent={93} color="darkcyan" />
 
               <Stats label="Java" percent={90} color="dark" />
               <Stats label="MySQL" percent={95} />
@@ -228,7 +254,7 @@ export default function Profile() {
             <h1>Hire me!</h1>
             <div>
               You can reach me through any of the contact information provided{" "}
-              <a href="/contact">here</a>.
+              <Link to="/contact">here</Link>.
             </div>
             <div>I am open to work for u :)</div>
           </section>
@@ -257,7 +283,7 @@ export default function Profile() {
             <Footer />
           </section>
         </Scrollspy>
-      </div>
+      </main>
     </div>
   );
 }

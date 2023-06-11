@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -37,10 +38,14 @@ export default function Header() {
   }, [clientHeight, navigate]);
   return (
     <>
+      <Helmet>
+        <title>Idris Vohra - Landing</title>
+        <meta name="description" content="Landing Page for iv-portfolio" />
+      </Helmet>
       <header className="header-sm">
         <section>
           <div className="d-flex justify-content-center align-items-end h-100">
-            <p style={{ color: "#0f1b33", width:"75%" }}>
+            <p style={{ color: "#0f1b33", width: "75%" }}>
               {" "}
               <b>Note</b>: This page has parallax effect that can only be
               experienced in screen with large size.

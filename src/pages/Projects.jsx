@@ -8,7 +8,9 @@ import css from "./Images/css.svg";
 import js from "./Images/js.svg";
 import html from "./Images/html.svg";
 import react from "./Images/react.svg";
+import { Helmet } from "react-helmet";
 import axios from "axios";
+import ProjectLoader from "./components/ProjectLoader";
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -28,6 +30,28 @@ export default function Projects() {
   }
   return (
     <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
+      <Helmet>
+        <title>Idris Vohra - All Projects</title>
+        <meta
+          name="description"
+          content="The webpage showcasing all the projects done by me (Idris Vohra)."
+        />
+        <meta
+          name="keywords"
+          content="Projects, Showcase, Idris Vohra, Idris, iv-portfolio, HTML5, CSS, React, React Native, JavaScript, Web developer, Application developer"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="Idris Vohra" />
+        <meta name="twitter:title" content="Idris Vohra - Portfolio" />
+        <meta
+          name="twitter:description"
+          content="This is a portfolio website of Full stack MERN Web developer Idris Vohra."
+        />
+        <meta
+          name="twitter:image"
+          content="https://photos.app.goo.gl/ev1uhkPK6feYxmgb8"
+        />
+      </Helmet>
       <div className="nav-scrollspy">
         <ProfileComp />
         <a href="#overview-proj" data-to-scrollspy-id="overview-proj">
@@ -95,67 +119,67 @@ export default function Projects() {
           </section>
           <section id="python">
             <h1>
-              Python <img src={py} alt="" className="icon-outer ms-2" />
+              Python <img src={py} alt="Python" className="icon-outer ms-2" />
             </h1>
             {getProjectsByLang("python").length > 0
               ? getProjectsByLang("python").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="css">
             <h1>
-              CSS <img src={css} alt="" className="icon-outer ms-2" />
+              CSS <img src={css} alt="CSS" className="icon-outer ms-2" />
             </h1>
             {getProjectsByLang("css").length > 0
               ? getProjectsByLang("css").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="js">
             <h1>
-              JavaScript <img src={js} alt="" className="icon-outer ms-2" />
+              JavaScript <img src={js} alt="JS" className="icon-outer ms-2" />
             </h1>
             {getProjectsByLang("js").length > 0
               ? getProjectsByLang("js").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="mixed-vanilla">
             <h1>
               Mixed Vainilla{" "}
-              <img src={html} alt="" className="icon-outer ms-2" /> +
-              <img src={css} alt="" className="icon-outer ms-2" /> +
-              <img src={js} alt="" className="icon-outer ms-2" />
+              <img src={html} alt="HTML" className="icon-outer ms-2" /> +
+              <img src={css} alt="CSS" className="icon-outer ms-2" /> +
+              <img src={js} alt="JavaScript" className="icon-outer ms-2" />
             </h1>
             {getProjectsByLang("mixed-vanilla").length > 0
               ? getProjectsByLang("mixed-vanilla").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="react">
             <h1>
-              React <img src={react} alt="" className="icon-outer ms-2" />
+              React <img src={react} alt="React" className="icon-outer ms-2" />
             </h1>
             {getProjectsByLang("react").length > 0
               ? getProjectsByLang("react").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="react-native">
             <h1>
               React Native{" "}
-              <img src={react} alt="" className="icon-outer ms-2" />
+              <img src={react} alt="React Native" className="icon-outer ms-2" />
             </h1>
             {getProjectsByLang("react-native").length > 0
               ? getProjectsByLang("react-native").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="other">
             <h1>Other</h1>
@@ -163,7 +187,7 @@ export default function Projects() {
               ? getProjectsByLang("other").map((props, i) => (
                   <Project {...props} key={i} />
                 ))
-              : "No projects"}
+              : <ProjectLoader/>}
           </section>
           <section id="end">
             <Footer />

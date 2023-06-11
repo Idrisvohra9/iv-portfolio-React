@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setCookie, getCookie } from "../tools/cookies";
+import { Helmet } from "react-helmet";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function Admin() {
     password: "",
   });
   const alert = useRef();
-  var tries = 3;
+  const [tries, setTries] = useState(3);
   useEffect(() => {
     if (getCookie("token").length > 10) {
       console.log(true);
@@ -42,16 +43,18 @@ export default function Admin() {
       } else {
         // Handle login error
         // Only give 3 tries
-        tries--;
+        setTries(tries-1);
         if (tries === 0) {
           setCookie("Unauthorized", "true", 1);
         }
-        console.log(tries);
+        // console.log(tries);
         alert.current.classList.add("show");
       }
     } catch (error) {
-      console.error("Error:", error);
-      tries--;
+      // console.error("Error:", error);
+
+      setTries(tries-1);
+
       if (tries === 0) {
         alert.current.classList.add("show");
         setCookie("Unauthorized", "true", 1);
@@ -60,6 +63,10 @@ export default function Admin() {
   };
   return (
     <div className="container-admin">
+      <Helmet>
+        <title>Idris Vohra - Admin</title>
+        <meta name="description" content="Admin Page for iv-portfolio" />
+      </Helmet>
       <div
         className="alert alert-danger alert-dismissible fade"
         role="alert"
