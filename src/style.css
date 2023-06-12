@@ -380,7 +380,7 @@ h5 {
 }
 
 .tab:hover {
-    color: #74a1aa;
+    color: white;
 }
 
 .tab.active {
@@ -635,6 +635,7 @@ a .icon {
 a .icon-inner {
     width: 28px !important;
     height: 28px !important;
+    fill: white;
 }
 
 h1 {
@@ -659,6 +660,17 @@ h1 .icon-outer {
     justify-content: center;
     height: 100%;
     width: 100%;
+}
+
+pre.ql-syntax {
+    background-color: #1d1d2b;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: .6rem;
+    width: 80%;
+    word-wrap: break-word;
+    overflow-x: scroll !important;
+    color: var(--secondary-clr);
 }
 
 .dot {
@@ -788,6 +800,30 @@ h1 .icon-outer {
     gap: 20px;
 }
 
+.input {
+    width: 100%;
+    padding: 0 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #080f1d;
+    color: var(--secondary-clr);
+    transition: .3s ease;
+}
+
+.input::placeholder {
+    color: #9e9ea7;
+}
+
+.input:focus,
+.input:hover {
+    outline: none;
+    background-color: #fff;
+    border-color: #015871;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    color: #080f1d;
+}
+
 .projects-table tr td {
     width: 10%;
     /* white-space: nowrap; */
@@ -848,7 +884,7 @@ h1 .icon-outer {
         grid-template-columns: auto;
         gap: 20px;
         position: relative;
-        z-index: 2;
+        z-index: 1;
     }
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import git from "../Images/github.svg";
+import git from "../Images/git-light.svg";
 import cp from "../Images/codepen.svg";
 import DOMPurify from "dompurify";
 export default function Project({
@@ -25,12 +25,11 @@ export default function Project({
           ></div>
         </div>
         <div className="w-100 d-flex justify-content-end align-items-center pe-3 text-dark">
-          <div className="btn btn-primary p-2 rounded-2 d-flex justify-content-evenly">
+          <div className="d-flex justify-content-evenly">
             {github.length > 0 ? (
               <a
                 href={github}
-                style={{ background: "transparent" }}
-                className="d-flex justify-content-evenly align-items-center"
+                className="btn btn-dark"
                 title="Open In Github"
               >
                 <img src={git} alt="Github Icon" className="icon-inner" />
@@ -41,8 +40,7 @@ export default function Project({
             {codepen.length > 0 ? (
               <a
                 href={codepen}
-                style={{ background: "transparent" }}
-                className="d-flex justify-content-evenly align-items-center ms-2"
+                className="btn btn-primary ms-2"
                 title="Open In Codepen"
               >
                 <img src={cp} alt="Codepen Icon" className="icon-inner" />

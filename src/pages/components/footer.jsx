@@ -79,28 +79,6 @@ export default function Footer() {
                   linkedIn
                 </a>
               </li>
-              <li className="mb-2">
-                <a
-                  href="/docs/5.2/"
-                  className="d-inline-flex flex-row justify-content-between align-items-center"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={instagram} alt="" />
-                  Fiverr
-                </a>
-              </li>
-              <li className="mb-2">
-                <a
-                  href="/docs/5.2/"
-                  className="d-inline-flex flex-row justify-content-between align-items-center"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={instagram} alt="" />
-                  Khali
-                </a>
-              </li>
             </ul>
           </div>
           <div className="col-6 col-lg-4">

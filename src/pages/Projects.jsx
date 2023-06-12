@@ -25,11 +25,27 @@ export default function Projects() {
       return p.lang === lang;
     });
   }
-  function scrollToTop() {
-    window.scrollTo(0, 0);
+  function searchProjects(e) {
+    const SearchValue = e.target.value.toUpperCase();
+    const projectCard = document.querySelectorAll(".card.project");
+
+    for (const pc of projectCard) {
+      console.log(pc);
+      let title = pc.querySelector(".card-header a.btn").innerHTML.toUpperCase();
+      // let tags = pc.querySelectorAll(".post-tag");
+      // console.log(tags);
+      // let tagsHTML = "";
+      // tags.forEach((tag) => (tagsHTML += " " + tag.innerHTML.toUpperCase()));
+      // console.log(tagsHTML);
+      if (title.includes(SearchValue)) {
+        pc.style.display = "block";
+      } else {
+        pc.style.display = "none";
+      }
+    }
   }
   return (
-    <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
+    <div className="d-flex flex-lg-row main">
       <Helmet>
         <title>Idris Vohra - All Projects</title>
         <meta
@@ -116,36 +132,53 @@ export default function Projects() {
               that proud of them or I haven't enjoyed making them or I think
               that they are too basic.
             </div>
+            <div className="d-flex justify-content-between mt-3 align-items-center">
+              <div className="input-group w-50 flex-nowrap">
+                <input
+                  type="text"
+                  placeholder="Find projects"
+                  className="input"
+                  onChange={searchProjects}
+                />
+                <span className="input-group-text search-btn bi-search"></span>
+              </div>
+            </div>
           </section>
           <section id="python">
             <h1>
               Python <img src={py} alt="Python" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("python").length > 0
-              ? getProjectsByLang("python").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("python").length > 0 ? (
+              getProjectsByLang("python").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="css">
             <h1>
               CSS <img src={css} alt="CSS" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("css").length > 0
-              ? getProjectsByLang("css").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("css").length > 0 ? (
+              getProjectsByLang("css").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="js">
             <h1>
               JavaScript <img src={js} alt="JS" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("js").length > 0
-              ? getProjectsByLang("js").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("js").length > 0 ? (
+              getProjectsByLang("js").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="mixed-vanilla">
             <h1>
@@ -154,40 +187,48 @@ export default function Projects() {
               <img src={css} alt="CSS" className="icon-outer ms-2" /> +
               <img src={js} alt="JavaScript" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("mixed-vanilla").length > 0
-              ? getProjectsByLang("mixed-vanilla").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("mixed-vanilla").length > 0 ? (
+              getProjectsByLang("mixed-vanilla").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="react">
             <h1>
               React <img src={react} alt="React" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("react").length > 0
-              ? getProjectsByLang("react").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("react").length > 0 ? (
+              getProjectsByLang("react").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="react-native">
             <h1>
               React Native{" "}
               <img src={react} alt="React Native" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("react-native").length > 0
-              ? getProjectsByLang("react-native").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("react-native").length > 0 ? (
+              getProjectsByLang("react-native").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="other">
             <h1>Other</h1>
-            {getProjectsByLang("other").length > 0
-              ? getProjectsByLang("other").map((props, i) => (
-                  <Project {...props} key={i} />
-                ))
-              : <ProjectLoader/>}
+            {getProjectsByLang("other").length > 0 ? (
+              getProjectsByLang("other").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
           </section>
           <section id="end">
             <Footer />
