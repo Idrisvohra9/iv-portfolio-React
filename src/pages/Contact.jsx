@@ -53,24 +53,28 @@ export default function Contact() {
                     <a
                       href="https://wa.me/919106930717"
                       className="btn btn-dark social"
+                      target="_blank"
                     >
                       Whatsapp <img src={whatsapp} alt="" />
                     </a>
                     <a
                       href="mailto: idrishaider987@gmail.com"
                       className="btn btn-dark social"
+                      target="_blank"
                     >
                       Email <img src={gmail} alt="" />
                     </a>
                     <a
                       href="https://www.instagram.com/idris_haider/"
                       className="btn btn-dark social"
+                      target="_blank"
                     >
                       Insta <img src={insta} alt="" />
                     </a>
                     <a
                       href="https://www.linkedin.com/in/idris-vohra-589106256"
                       className="btn btn-dark social"
+                      target="_blank"
                     >
                       {" "}
                       LinkedIn <img src={linkedIn} alt="" />

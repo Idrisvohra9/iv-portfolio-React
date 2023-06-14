@@ -132,6 +132,7 @@ export default function Projects() {
               that proud of them or I haven't enjoyed making them or I think
               that they are too basic.
             </div>
+            <b>It might take a minute to load the projects... Hang on tight! it would be worth it😉.</b>
             <div className="d-flex justify-content-between mt-3 align-items-center">
               <div className="input-group w-50 flex-nowrap">
                 <input

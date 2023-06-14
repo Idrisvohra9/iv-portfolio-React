@@ -113,6 +113,7 @@ export default function AddProject() {
             type="text"
             className="form-control"
             value={projectData?.title}
+            required
             onChange={(e) =>
               setProjectData({
                 ...projectData,
@@ -128,6 +129,7 @@ export default function AddProject() {
             className="form-select"
             aria-label="Default select example"
             value={projectData?.lang}
+            required
             onChange={(e) =>
               setProjectData({ ...projectData, lang: e.target.value })
             }
@@ -147,6 +149,7 @@ export default function AddProject() {
             className="form-select"
             aria-label="Default select example"
             value={projectData?.skill}
+            required
             onChange={(e) =>
               setProjectData({ ...projectData, skill: e.target.value })
             }
@@ -163,6 +166,7 @@ export default function AddProject() {
           <ReactQuill
             className="bg-light input"
             value={projectData?.projBody}
+            required
             onChange={(newValue) =>
               setProjectData({ ...projectData, projBody: newValue })
             }
