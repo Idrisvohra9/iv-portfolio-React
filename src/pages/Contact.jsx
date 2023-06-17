@@ -54,6 +54,7 @@ export default function Contact() {
                       href="https://wa.me/919106930717"
                       className="btn btn-dark social"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       Whatsapp <img src={whatsapp} alt="" />
                     </a>
@@ -61,6 +62,7 @@ export default function Contact() {
                       href="mailto: idrishaider987@gmail.com"
                       className="btn btn-dark social"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       Email <img src={gmail} alt="" />
                     </a>
@@ -68,6 +70,7 @@ export default function Contact() {
                       href="https://www.instagram.com/idris_haider/"
                       className="btn btn-dark social"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       Insta <img src={insta} alt="" />
                     </a>
@@ -75,6 +78,7 @@ export default function Contact() {
                       href="https://www.linkedin.com/in/idris-vohra-589106256"
                       className="btn btn-dark social"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       {" "}
                       LinkedIn <img src={linkedIn} alt="" />

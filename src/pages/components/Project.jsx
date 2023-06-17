@@ -25,21 +25,22 @@ export default function Project({
           ></div>
         </div>
         <div className="w-100 d-flex justify-content-end align-items-center pe-3 text-dark">
-          <div className="d-flex justify-content-evenly">
+          <div className="d-flex justify-content-evenly align-items-center">
             {github.length > 0 ? (
               <>
-                <span>Find Project:</span>
+                <span className="text-muted me-2">Find Project:</span>
                 <a
                   href={github}
                   className="btn btn-dark"
                   title="Open In Github"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img src={git} alt="Github Icon" className="icon-inner" />
                 </a>
               </>
             ) : (
-              "Private Project"
+              <span className="text-muted">Private Project</span>
             )}
             {codepen.length > 0 ? (
               <a
@@ -47,6 +48,7 @@ export default function Project({
                 className="btn btn-primary ms-2"
                 title="Open In Codepen"
                 target="_blank"
+                rel="noreferrer"
               >
                 <img src={cp} alt="Codepen Icon" className="icon-inner" />
               </a>

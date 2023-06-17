@@ -9,7 +9,7 @@ import linkedin from "../Images/linkedin.svg";
 
 export default function Footer() {
   return (
-    <footer className="IV-footer py-md-5 rounded-2">
+    <footer className="IV-footer py-md-5">
       <div className="container">
         <div className="row">
           <div className="col-lg-4">
@@ -70,7 +70,7 @@ export default function Footer() {
               </li>
               <li className="mb-2">
                 <a
-                  href="/docs/5.2/"
+                  href="https://www.linkedin.com/in/idris-vohra-589106256/"
                   className="d-inline-flex flex-row justify-content-between align-items-center"
                   target="_blank"
                   rel="noreferrer"
@@ -115,17 +115,6 @@ export default function Footer() {
                 >
                   <img src={octopus} alt="" />
                   Main Website
-                </a>
-              </li>
-              <li className="mb-2">
-                <a
-                  href="/docs/5.2/"
-                  className="d-inline-flex flex-row justify-content-between align-items-center"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={youtube} alt="" />
-                  YouTube
                 </a>
               </li>
             </ul>

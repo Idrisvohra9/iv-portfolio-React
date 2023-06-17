@@ -400,14 +400,14 @@ h5 {
     top: calc(50vh - 22vw);
     left: 0;
     z-index: 2;
-    background-color: #69b4c393;
-    backdrop-filter: blur(10px) saturate(3);
     width: 20vw;
     overflow: show;
     padding: 2rem 1rem 2rem 1rem;
     -webkit-clip-path: polygon(-26% -4%, 100% 15%, 100% 85%, 0% 100%);
     clip-path: polygon(-26% -4%, 100% 15%, 100% 85%, 0% 100%);
     text-align: center;
+    backdrop-filter: blur(10px) saturate(3);
+    background-color: #69b4c393;
     filter: drop-shadow(100px 10px 10px rgba(128, 0, 128, 0.72));
 }
 
@@ -474,11 +474,16 @@ a:hover {
 
 .stats {
     margin-top: 20px;
-    background-color: silver;
+    background-color: var(--secondary-clr);
     border-radius: 20px;
     color: var(--primary-clr);
+    box-shadow: 10px 10px 10px rgba(31, 96, 186, 0.417);
+    border: 5px solid transparent;
+    transition: border 0.5s ease-in-out;
 }
-
+.stats:hover{
+    border: 5px solid var(--tertiary-clr);
+}
 .qr-code {
     width: 400px;
     height: 400px;
@@ -486,20 +491,25 @@ a:hover {
 }
 
 .IV-footer {
-    background-color: #69b4c393;
     backdrop-filter: blur(10px) saturate(3);
+    background-color: #69b4c393;
+    filter: drop-shadow(0 0 10px rgba(128, 0, 128, 0.72));
+    color: var(--secondary-clr);
+    border: 5px solid var(--tertiary-clr);
+    border-right: none;
     font-size: 20px;
 }
 
 .IV-footer h5 {
-    color: var(--primary-clr);
+    color: var(--secondary-clr);
     font-weight: bold;
 }
 
 .IV-footer a {
     cursor: pointer;
+    text-decoration: none;
     background-color: transparent;
-    color: var(--primary-clr);
+    color: var(--secondary-clr);
 }
 
 .IV-footer a:hover {
@@ -644,7 +654,7 @@ h1 {
     text-transform: capitalize;
 }
 
-h1 .icon-outer {
+.icon-outer {
     width: 46px;
     height: 46px;
 }

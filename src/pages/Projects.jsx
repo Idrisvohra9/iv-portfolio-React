@@ -32,11 +32,6 @@ export default function Projects() {
     for (const pc of projectCard) {
       console.log(pc);
       let title = pc.querySelector(".card-header a.btn").innerHTML.toUpperCase();
-      // let tags = pc.querySelectorAll(".post-tag");
-      // console.log(tags);
-      // let tagsHTML = "";
-      // tags.forEach((tag) => (tagsHTML += " " + tag.innerHTML.toUpperCase()));
-      // console.log(tagsHTML);
       if (title.includes(SearchValue)) {
         pc.style.display = "block";
       } else {

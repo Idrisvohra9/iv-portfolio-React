@@ -8,7 +8,10 @@ export default function Stats(props) {
     backgroundColor: props.color
   }
   return (
-    <span className="d-flex w-100 align-items-center flex-column p-3 stats">
+    <span className="d-flex w-100 align-items-center flex-row p-3 stats">
+      {props.icon && (
+        <img src={props.icon} alt="programming language icon" className="icon-outer me-1"/>
+      )}
         <span className="label p-3" style={{ fontWeight:"bold", fontSize:"2rem"}}>
           {props.label}
         </span>

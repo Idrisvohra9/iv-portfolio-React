@@ -8,6 +8,16 @@ import qrCode from "./Images/QRCODE.webp";
 import AutoTyper from "./components/autoTyper";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import py from "./Images/python.svg";
+import css from "./Images/css.svg";
+import js from "./Images/js.svg";
+import html from "./Images/html.svg";
+import react from "./Images/react.svg";
+import oracle from "./Images/oracle.svg";
+import java from "./Images/java.svg";
+import mongo from "./Images/mongo.svg";
+import mysql from "./Images/mysql.svg";
+import django from "./Images/django.svg";
 export default function Profile() {
   function scrollToTop() {
     window.scrollTo(0, 0);
@@ -48,10 +58,10 @@ export default function Profile() {
           About
         </a>
         <a href="#what-i-do" data-to-scrollspy-id="what-i-do">
-          What I do
+          What I do?
         </a>
         <a href="#stats" data-to-scrollspy-id="stats">
-          How good I am
+          How good am I?
         </a>
         <a href="#hire-me" data-to-scrollspy-id="hire-me">
           Hire me
@@ -235,19 +245,23 @@ export default function Profile() {
               have been through and know that I am going to improve than this.
             </div>
             <div className="container">
-              <Stats label="Python" percent={88} />
-              <Stats label="Django" percent={86} />
-              <Stats label="HTML" percent={98} color="darkorange" />
-              <Stats label="CSS" percent={95} color="blue" />
-              <Stats label="SCSS" percent={80} color="blue" />
-              <Stats label="JS" percent={85} color="green" />
-              <Stats label="React" percent={80} color="green" />
-              <Stats label="React Native" percent={93} color="darkcyan" />
+              <h2 className="mt-4">Languages</h2>
+              <Stats label="Python" percent={88} icon={py} />
+              <Stats label="HTML" percent={98} color="darkorange" icon={html} />
+              <Stats label="CSS" percent={95} color="blue" icon={css} />
+              <Stats label="SCSS" percent={80} color="blue" icon={css} />
+              <Stats label="JS" percent={85} color="green" icon={js} />
+              <Stats label="Java" percent={90} color="dark" icon={java}/>
 
-              <Stats label="Java" percent={90} color="dark" />
-              <Stats label="MySQL" percent={95} />
-              <Stats label="Oracle" percent={90} color="crimson" />
-              <Stats label="MongoDB" percent={93} color="magenta" />
+              <h2 className="mt-4">Frameworks</h2>
+              <Stats label="Django" percent={86} icon={django}/>
+              <Stats label="React" percent={80} color="green" icon={react}/>
+              <Stats label="React Native" percent={93} color="darkcyan" icon={react}/>
+
+              <h2 className="mt-4">Databases</h2>
+              <Stats label="MySQL" percent={95} icon={mysql}/>
+              <Stats label="Oracle" percent={90} color="crimson" icon={oracle}/>
+              <Stats label="MongoDB" percent={93} color="magenta" icon={mongo}/>
             </div>
           </section>
           <section id="hire-me">

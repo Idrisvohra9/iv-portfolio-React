@@ -64,7 +64,7 @@ export default function ProfileComp() {
             <img src={twitter} alt="Twitter" />
           </a>
           <a
-            href="https://twitter.com/themellowcoder"
+            href="https://www.linkedin.com/in/idris-vohra-589106256/"
             target="_blank"
             rel="noreferrer"
             className="imgBx"

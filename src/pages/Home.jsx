@@ -1,12 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-  const turt = useRef();
-  const heading = useRef();
-  const btn = useRef();
-  const tentac = useRef();
   const navigate = useNavigate();
   function scrollSmoothed() {
     window.scrollTo({
@@ -16,22 +12,19 @@ export default function Header() {
   }
   const { clientHeight } = document.documentElement;
 
-  // console.log(clientHeight / 2);
-  // Use useEffect when we want to add a event listener on window so that it
   useEffect(() => {
     window.addEventListener("scroll", () => {
       let value = window.scrollY;
+      const heading = [...document.getElementsByClassName("heading")];
 
-      heading.current.style.top = 220 - value + "px";
-      tentac.current.style.left = -60 - value + "px";
-      turt.current.style.top = 60 - value + "px";
-      turt.current.style.right = 210 - value + "px";
+      if (heading) {
+        heading.forEach((head)=> head.style.top = 220 - value + "px");
+        document.getElementById("tentacles").style.left = -60 - value + "px";
+        document.querySelector(".turtle").style.top = 60 - value + "px";
+        document.querySelector(".turtle").style.right = 210 - value + "px";
+      }
 
-      // console.log("Value:",Number.parseInt(value)-5);
-      // console.log("Height:", clientHeight / 2);
-      // console.log(Number.parseInt(value)-5 === clientHeight / 2);
       if (Number.parseInt(value) >= clientHeight / 2 - 10) {
-        // console.log("End");
         navigate("/profile");
       }
     });
@@ -53,11 +46,9 @@ export default function Header() {
           </div>
         </section>
         <section>
-          <h1 className="heading" ref={heading}>
-            Idris Vohra
-          </h1>
+          <h1 className="heading">Idris Vohra</h1>
           <div className="d-flex justify-content-center">
-            <button className="button" ref={btn} onClick={scrollSmoothed}>
+            <button className="button" onClick={scrollSmoothed}>
               {" "}
               Explore
             </button>
@@ -71,39 +62,31 @@ export default function Header() {
           src={require("./Images/ColorBackground.webp")}
           alt=""
           className="parallax-image img-fluid background"
-          // loading="lazy"
         />
         <img
           src={require("./Images/ForegroundReefs.webp")}
           alt=""
           className="parallax-image img-fluid reefs"
-          // loading="lazy"
         />
         <img
           src={require("./Images/Fishes.webp")}
           alt=""
           className="parallax-image img-fluid fishes"
-          // loading="lazy"
         />
         <img
           src={require("./Images/turtle.webp")}
           alt=""
           className="img-fluid turtle"
-          // loading="lazy"
-          ref={turt}
         />
         <img
           src={require("./Images/tentacles.webp")}
           alt=""
           className="parallax-image img-fluid tentacles"
-          // loading="lazy"
-          ref={tentac}
+          id="tentacles"
         />
-        <h1 className="heading" ref={heading}>
-          Idris Vohra
-        </h1>
+        <h1 className="heading">Idris Vohra</h1>
         <div className="d-flex justify-content-center">
-          <button className="button" ref={btn} onClick={scrollSmoothed}>
+          <button className="button" onClick={scrollSmoothed}>
             {" "}
             Explore
           </button>
