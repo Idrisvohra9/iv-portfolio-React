@@ -28,7 +28,7 @@ export default function Project({
         // Handle any errors
         console.error("Error fetching image URLs:", error);
       });
-  }, [ImageListRef]);
+  }, []);
 
   return (
     <div className="card project">
