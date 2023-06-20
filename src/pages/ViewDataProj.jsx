@@ -8,6 +8,8 @@ import react from "./Images/react.svg";
 import axios from "axios";
 import Scrollspy from "react-scrollspy";
 import { Link } from "react-router-dom";
+import { storage } from "../firebase";
+import { ref, deleteObject} from "firebase/storage";
 
 export default function ViewDataProj() {
   const [projects, setProjects] = useState([]);
@@ -21,10 +23,18 @@ export default function ViewDataProj() {
       return p.lang === lang;
     });
   }
-  function deleteProject(id) {
-    axios
+  async function deleteProject(id, htmlId) {
+    await axios
       .delete(`${process.env.REACT_APP_BACKEND}project/${id}`)
       .then(({ data }) => setProjects(data));
+    const folderRef = ref(storage, `${htmlId}/`);
+
+    try {
+      deleteObject(folderRef);
+      console.log("Folder deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting folder:", error);
+    }
   }
   return (
     <div className="d-flex flex-lg-row main">
@@ -108,7 +118,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >
@@ -175,7 +185,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >
@@ -242,7 +252,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >
@@ -312,7 +322,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >
@@ -379,7 +389,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >
@@ -447,7 +457,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >
@@ -512,7 +522,7 @@ export default function ViewDataProj() {
                       </Link>
                       <button
                         className="btn btn-light ms-2"
-                        onClick={() => deleteProject(props.id)}
+                        onClick={() => deleteProject(props.id, props.htmlId)}
                         title="Delete"
                         type="button"
                       >

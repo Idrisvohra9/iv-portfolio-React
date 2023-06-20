@@ -52,7 +52,7 @@ export default function AdminPanel() {
         </div>
         <hr />
         <div className="d-flex justify-content-center">
-          <nav className="admin-nav">
+          <nav className="IV-nav">
             <ul className="d-flex flex-row justify-content-evenly">
               <li>
                 <NavLink to="add" className="tab">

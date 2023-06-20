@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import hljs from "highlight.js";
 import "highlight.js/styles/base16/onedark.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useParams } from "react-router";
+import { storage } from "../firebase";
+import { ref, uploadBytes } from "firebase/storage";
+
 hljs.configure({
   languages: ["javascript", "css", "scss", "python", "html", "php"],
 });
@@ -20,7 +23,7 @@ const modules = {
     ["bold", "italic", "underline", "strike"],
     [{ list: "ordered" }, { list: "bullet" }],
     ["code-block"],
-    ["link", "image"],
+    ["link"],
     ["clean"],
   ], // Include button in toolbar
 };
@@ -28,38 +31,46 @@ export default function AddProject() {
   const { request } = useParams();
   const [projectData, setProjectData] = useState({
     title: "",
-    projBody: "",
+    description: "",
     lang: "python",
     htmlId: "",
     github: "",
     codepen: "",
     skill: "beginner",
   });
+  const [Images, setImages] = useState([]);
   const placeholder = request !== "add" ? "update" : "add";
   const id = request !== "add" ? request : null;
   useEffect(() => {
     if (placeholder === "update") {
-      // console.log("Update");
       // Get the old values for updating
       axios
         .get(`${process.env.REACT_APP_BACKEND}project/${id}`)
-        .then(({data}) => setProjectData(data))
+        .then(({ data }) => setProjectData(data))
         .catch((err) => window.alert(err));
     }
   }, [id, placeholder]);
-  const addProject = (e) => {
+  const addProject = async (e) => {
+    // const formData = new FormData();
+
     e.preventDefault();
     if (request === "add") {
-      axios
-        .post(`${process.env.REACT_APP_BACKEND}project`, projectData)
-        .then(() => {
-          window.location.reload();
-        })
-        .catch((err) => {
-          window.alert(err);
-        });
+      for (let i = 0; i < Images.length; i++) {
+        await uploadBytes(
+          ref(storage, `${projectData.htmlId}/${Images[i].name}`),
+          Images[i]
+        );
+        if (i === Images.length - 1) {
+          // console.log(projectData);
+          await axios.post(
+            `${process.env.REACT_APP_BACKEND}project`,
+            projectData
+          );
+          alert("Uploaded");
+        }
+      }
     } else {
-      axios
+      await axios
         .patch(`${process.env.REACT_APP_BACKEND}project/${id}`, projectData)
         .then(({ success }) =>
           success ? document.querySelector(".toast").classList.add("show") : ""
@@ -165,12 +176,22 @@ export default function AddProject() {
           </label>
           <ReactQuill
             className="bg-light input"
-            value={projectData?.projBody}
+            value={projectData?.description}
             required
             onChange={(newValue) =>
-              setProjectData({ ...projectData, projBody: newValue })
+              setProjectData({ ...projectData, description: newValue })
             }
             modules={modules}
+          />
+        </div>
+        <div className="input-group mb-3">
+          <span className="input-group-text">I/O Images:</span>
+          <input
+            type="file"
+            className="form-control"
+            onChange={(e) => setImages(e.target.files)}
+            multiple
+            accept=".gif, .jpeg, .jpg, .png, .webp"
           />
         </div>
         <div className="input-group mb-3">

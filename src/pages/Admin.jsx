@@ -14,7 +14,7 @@ export default function Admin() {
   const [tries, setTries] = useState(3);
   useEffect(() => {
     if (getCookie("token").length > 10) {
-      console.log(true);
+      // console.log(true);
       navigate(`/admin/dashboard/${getCookie("token")}`);
     }
     if (getCookie("Unauthorized") === "true") {

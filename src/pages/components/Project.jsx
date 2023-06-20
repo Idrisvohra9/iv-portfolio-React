@@ -1,15 +1,35 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import git from "../Images/git-light.svg";
 import cp from "../Images/codepen.svg";
 import DOMPurify from "dompurify";
+import { listAll, ref, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase";
 export default function Project({
   title,
-  projBody,
+  description,
   htmlId,
   github,
   codepen,
   skill,
 }) {
+  const [ImageList, setImageList] = useState([]);
+  const ImageListRef = ref(storage, `${htmlId}/`);
+  useEffect(() => {
+    listAll(ImageListRef)
+      .then((res) => {
+        const promises = res.items.map((item) => getDownloadURL(item));
+        return Promise.all(promises);
+      })
+      .then((urls) => {
+        const uniqueUrls = Array.from(new Set(urls));
+        setImageList(uniqueUrls);
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error("Error fetching image URLs:", error);
+      });
+  }, [ImageListRef]);
+
   return (
     <div className="card project">
       <div className="card-header">
@@ -21,8 +41,25 @@ export default function Project({
         <div className="card-body">
           <h4>Project Description:</h4>
           <div
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(projBody) }}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(description),
+            }}
           ></div>
+          {ImageList.length > 0 && (
+            <>
+              <h4>I/O Images:</h4>
+              {ImageList.map((url, k) => {
+                return (
+                  <img
+                    src={url}
+                    loading="lazy"
+                    alt="Project Media Assets"
+                    key={k}
+                  />
+                );
+              })}
+            </>
+          )}
         </div>
         <div className="w-100 d-flex justify-content-end align-items-center pe-3 text-dark">
           <div className="d-flex justify-content-evenly align-items-center">
