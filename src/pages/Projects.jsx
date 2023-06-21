@@ -133,7 +133,7 @@ export default function Projects() {
                 <input
                   type="text"
                   placeholder="Find projects"
-                  className="input"
+                  className="search-input"
                   onChange={searchProjects}
                 />
                 <span className="input-group-text search-btn bi-search"></span>

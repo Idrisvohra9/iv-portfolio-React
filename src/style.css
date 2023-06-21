@@ -994,7 +994,9 @@ pre.ql-syntax {
 .card.project .card-body {
     color: #0f1b33;
 }
-
+.card.project .card-body a{
+    display: inline;
+}
 .card.project img {
     width: 100%;
     height: 350px;
@@ -1007,7 +1009,7 @@ pre.ql-syntax {
     gap: 20px;
 }
 
-.input {
+.search-input {
     width: 100%;
     padding: 0 1rem;
     border: 2px solid transparent;
@@ -1018,12 +1020,12 @@ pre.ql-syntax {
     transition: .3s ease;
 }
 
-.input::placeholder {
+.search-input::placeholder {
     color: #9e9ea7;
 }
 
-.input:focus,
-.input:hover {
+.search-input:focus,
+.search-input:hover {
     outline: none;
     background-color: #fff;
     border-color: #015871;
