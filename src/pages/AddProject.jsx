@@ -55,7 +55,7 @@ export default function AddProject() {
 
     e.preventDefault();
     if (request === "add") {
-      for (let i = 0; i < Images.length; i++) {
+      for (let i = 0; i <= Images.length; i++) {
         await uploadBytes(
           ref(storage, `${projectData.htmlId}/${Images[i].name}`),
           Images[i]
