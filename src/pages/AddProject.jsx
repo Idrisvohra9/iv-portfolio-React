@@ -55,20 +55,16 @@ export default function AddProject() {
 
     e.preventDefault();
     if (request === "add") {
-      for (let i = 0; i <= Images.length; i++) {
-        await uploadBytes(
-          ref(storage, `${projectData.htmlId}/${Images[i].name}`),
-          Images[i]
-        );
-        if (i === Images.length) {
-          // console.log(projectData);
-          await axios.post(
-            `${process.env.REACT_APP_BACKEND}project`,
-            projectData
+      if (Images.length > 0) {
+        for (let i = 0; i < Images.length; i++) {
+          await uploadBytes(
+            ref(storage, `${projectData.htmlId}/${Images[i].name}`),
+            Images[i]
           );
-          alert("Uploaded");
         }
       }
+      await axios.post(`${process.env.REACT_APP_BACKEND}project`, projectData);
+      alert("Uploaded");
     } else {
       await axios
         .patch(`${process.env.REACT_APP_BACKEND}project/${id}`, projectData)
