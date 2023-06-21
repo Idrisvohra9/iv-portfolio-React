@@ -60,7 +60,7 @@ export default function AddProject() {
           ref(storage, `${projectData.htmlId}/${Images[i].name}`),
           Images[i]
         );
-        if (i === Images.length - 1) {
+        if (i === Images.length) {
           // console.log(projectData);
           await axios.post(
             `${process.env.REACT_APP_BACKEND}project`,
