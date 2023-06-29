@@ -1,10 +1,10 @@
 import React from "react";
 import ProfileComp from "./components/ProfileComp";
 import Scrollspy from "react-ui-scrollspy";
-import linkedIn from "./Images/linkedin.svg";
-import whatsapp from "./Images/whatsapp.svg";
-import gmail from "./Images/gmail.svg";
-import insta from "./Images/instagram.svg";
+import linkedIn from "../Assets/Images/linkedin.svg";
+import whatsapp from "../Assets/Images/whatsapp.svg";
+import gmail from "../Assets/Images/gmail.svg";
+import insta from "../Assets/Images/instagram.svg";
 import { Helmet } from "react-helmet";
 
 export default function Contact() {

@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Footer from "./components/footer";
 import Scrollspy from "react-ui-scrollspy";
 import Project from "./components/Project";
 import ProfileComp from "./components/ProfileComp";
-import py from "./Images/python.svg";
-import css from "./Images/css.svg";
-import js from "./Images/js.svg";
-import html from "./Images/html.svg";
-import react from "./Images/react.svg";
+import py from "../Assets/Images/python.svg";
+import css from "../Assets/Images/css.svg";
+import js from "../Assets/Images/js.svg";
+import html from "../Assets/Images/html.svg";
+import react from "../Assets/Images/react.svg";
 import { Helmet } from "react-helmet";
-import axios from "axios";
 import ProjectLoader from "./components/ProjectLoader";
 
-export default function Projects() {
-  const [projects, setProjects] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}projects`)
-      .then((response) => setProjects(response.data))
-      .catch((error) => console.log(error));
-  }, []);
+export default function Projects({ ProjData }) {
   function getProjectsByLang(lang) {
-    return projects.filter((p) => {
+    return ProjData.data.filter((p) => {
       return p.lang === lang;
     });
   }
@@ -31,7 +23,9 @@ export default function Projects() {
 
     for (const pc of projectCard) {
       console.log(pc);
-      let title = pc.querySelector(".card-header a.btn").innerHTML.toUpperCase();
+      let title = pc
+        .querySelector(".card-header a.btn")
+        .innerHTML.toUpperCase();
       if (title.includes(SearchValue)) {
         pc.style.display = "block";
       } else {
@@ -45,7 +39,7 @@ export default function Projects() {
         <title>Idris Vohra - All Projects</title>
         <meta
           name="description"
-          content="The webpage showcasing all the projects done by me (Idris Vohra)."
+          content="The webpage showcasing all the data.data done by me (Idris Vohra)."
         />
         <meta
           name="keywords"
@@ -115,19 +109,23 @@ export default function Projects() {
           <section id="overview-proj">
             <h1>Projects Overview</h1>
             <div>
-              In the list of projects portrayed here are done 100% by me.
+              Below is a curated list of projects I have personally developed.
             </div>
             <div>
-              If there are projects in here that are inspired by someone else's
-              work then I will be sure to put their reference.
+              While some projects may draw inspiration from the work of others,
+              I always provide proper references and credit.
             </div>
             <div>
-              <b>Note:</b> I have done many more projects in other languages,
-              the reason why I didn't mention them is because either I am not
-              that proud of them or I haven't enjoyed making them or I think
-              that they are too basic.
+              Please <b>note</b> that this is not an exhaustive list, and I have
+              worked on numerous projects in other programming languages as
+              well. However, I have chosen to highlight the projects that I am
+              particularly proud of, enjoyed working on, or consider more
+              advanced.
             </div>
-            <b>It might take a minute to load the projects... Hang on tight! it would be worth it😉.</b>
+            <b>
+              The projects may take a moment to load, but I assure you it will
+              be worth the wait. 😉
+            </b>
             <div className="d-flex justify-content-between mt-3 align-items-center">
               <div className="input-group w-50 flex-nowrap">
                 <input

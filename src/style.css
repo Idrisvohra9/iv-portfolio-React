@@ -29,43 +29,6 @@ body {
     animation-iteration-count: infinite;
 }
 
-#cursor {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    top: 50%;
-    left: 50%;
-    clip-path: polygon(20% 0, 85% 10%, 100% 55%, 70% 90%, 10% 90%, 0 40%);
-    border-radius: 5px;
-    background-color: #69b4c361;
-    backdrop-filter: blur(10px) saturate(3);
-    pointer-events: none;
-    z-index: 9;
-    transition: transform .5s;
-}
-
-#cursor.hovered {
-    transform: scale(1.75);
-}
-
-#cursor.hovered.shape1 {
-    clip-path: polygon(0 23%, 100% 14%, 80% 79%, 0 69%);
-}
-
-#cursor.hovered.shape2 {
-    clip-path: polygon(12% 21%, 94% 30%, 100% 70%, 0 80%);
-}
-
-#cursor.hovered.shape3 {
-    clip-path: polygon(0 30%, 100% 34%, 96% 79%, 6% 71%);
-}
-
-#cursor.hovered.shape4 {
-    clip-path: polygon(11% 22%, 100% 34%, 94% 80%, 0 73%);
-}
-
-
-
 body::-webkit-scrollbar {
     display: block;
     width: 8px;
@@ -588,10 +551,6 @@ main {
     height: max-content;
 }
 
-.main-content {
-    cursor: none;
-}
-
 h4,
 h5 {
     overflow: hidden;
@@ -994,9 +953,11 @@ pre.ql-syntax {
 .card.project .card-body {
     color: #0f1b33;
 }
-.card.project .card-body a{
+
+.card.project .card-body a {
     display: inline;
 }
+
 .card.project img {
     width: 100%;
     height: 350px;
@@ -1024,6 +985,37 @@ pre.ql-syntax {
     color: #9e9ea7;
 }
 
+.button-container {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 5;
+    z-index: 3;
+}
+
+.play-button {
+    width: 3rem;
+    margin: 0 1rem 1rem 0;
+    padding: 1rem;
+    height: 3rem;
+    display: flex;
+    margin-left: auto;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #69b4c393;
+    backdrop-filter: blur(10px) saturate(7);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    /* filter: drop-shadow(10px 0 10px rgba(128, 0, 128, 0.72)); */
+}
+
+.play-button i::before {
+    cursor: pointer;
+}
+
 .search-input:focus,
 .search-input:hover {
     outline: none;
@@ -1045,11 +1037,7 @@ pre.ql-syntax {
 @media only screen and (max-width: 600px) {
     .IV-nav {
         width: 90% !important;
-        font-size: 15px;
-    }
-
-    #cursor {
-        display: none;
+        font-size: .8rem;
     }
 
     .nav-scrollspy {
@@ -1111,9 +1099,6 @@ pre.ql-syntax {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    a {
-        cursor: none !important;
-    }
 
     .IV-nav {
         width: 70% !important;
@@ -1135,10 +1120,6 @@ pre.ql-syntax {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    a {
-        cursor: none !important;
-    }
-
     .IV-nav {
         width: 50% !important;
     }

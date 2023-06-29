@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Project from "./components/Project";
-import py from "./Images/python.svg";
-import css from "./Images/css.svg";
-import js from "./Images/js.svg";
-import html from "./Images/html.svg";
-import react from "./Images/react.svg";
+import py from "../Assets/Images/python.svg";
+import css from "../Assets/Images/css.svg";
+import js from "../Assets/Images/js.svg";
+import html from "../Assets/Images/html.svg";
+import react from "../Assets/Images/react.svg";
 import axios from "axios";
 import Scrollspy from "react-scrollspy";
 import { Link } from "react-router-dom";
 
-export default function ViewDataProj() {
-  const [projects, setProjects] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_BACKEND}projects`)
-      .then(({ data }) => setProjects(data));
-  }, []);
+export default function ViewDataProj({ ProjData }) {
   function getProjectsByLang(lang) {
-    return projects.filter((p) => {
+    return ProjData.data.filter((p) => {
       return p.lang === lang;
     });
   }
   async function deleteProject(id) {
     await axios
       .delete(`${process.env.REACT_APP_BACKEND}project/${id}`)
-      .then(({ data }) => setProjects(data));
+      .then(({ data }) => (ProjData.data = data));
   }
   return (
     <div className="d-flex flex-lg-row main">

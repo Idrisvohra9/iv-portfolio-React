@@ -1,14 +1,26 @@
-export default async function Fetch() {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND}projects`, {
-        method: 'GET',
-        mode: "cors",
-        headers: {
-            'Content-Type': 'application/json',
-        }
+import React, { useEffect, useState } from 'react'
+
+export default function useFetch() {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    async function fetchData() {
+        await fetch(process.env.REACT_APP_BACKEND + "projects")
+            .then((response) => response.json())
+            .then((data) => {
+                setData(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                setError(error);
+                setLoading(false);
+            })
     }
-    );
-    if (!response.ok) throw new Error("Couldn't fetch projects'");
-    const projects = await response.json();
-    // console.log(projects);
-    return projects;
+    function reFetch() {
+        fetchData();
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
+    return { data, loading, error, reFetch };
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import git from "../Images/git-light.svg";
-import cp from "../Images/codepen.svg";
+import git from "../../Assets/Images/git-light.svg";
+import cp from "../../Assets/Images/codepen.svg";
 import DOMPurify from "dompurify";
 import { listAll, ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../../firebase";
@@ -52,7 +52,6 @@ export default function Project({
                 return (
                   <img
                     src={url}
-                    loading="lazy"
                     alt="Project Media Assets"
                     key={k}
                   />

@@ -62,22 +62,22 @@ export default function Header() {
 
         <div className="background2">
           <img
-            src={require("./Images/layer1.png")}
+            src={require("../Assets/Images/layer1.png")}
             alt="Parallax Image"
             className="parallax-image img-fluid layer1"
           />
           <img
-            src={require("./Images/layer2.png")}
+            src={require("../Assets/Images/layer2.png")}
             alt="Parallax Image"
             className="parallax-image img-fluid layer2"
           />
           <img
-            src={require("./Images/moon.png")}
+            src={require("../Assets/Images/moon.png")}
             alt="Parallax Image"
             className="parallax-image img-fluid moon"
           />
           <img
-            src={require("./Images/birds.png")}
+            src={require("../Assets/Images/birds.png")}
             alt="Parallax Image"
             className="parallax-image img-fluid birds"
           />
@@ -93,27 +93,27 @@ export default function Header() {
       </header>
       <header style={{ scrollBehavior: "smooth" }} className="header-lg">
         <img
-          src={require("./Images/ColorBackground.webp")}
+          src={require("../Assets/Images/ColorBackground.webp")}
           alt="Parallax Image"
           className="parallax-image img-fluid background"
         />
         <img
-          src={require("./Images/ForegroundReefs.webp")}
+          src={require("../Assets/Images/ForegroundReefs.webp")}
           alt="Parallax Image"
           className="parallax-image img-fluid reefs"
         />
         <img
-          src={require("./Images/Fishes.webp")}
+          src={require("../Assets/Images/Fishes.webp")}
           alt="Parallax Image"
           className="parallax-image img-fluid fishes"
         />
         <img
-          src={require("./Images/turtle.webp")}
+          src={require("../Assets/Images/turtle.webp")}
           alt="Parallax Image"
           className="img-fluid turtle"
         />
         <img
-          src={require("./Images/tentacles.webp")}
+          src={require("../Assets/Images/tentacles.webp")}
           alt="Parallax Image"
           className="parallax-image img-fluid tentacles"
         />
