@@ -17,6 +17,7 @@ const Layout = () => {
     audio.play(); // Start playing the audio again
   });
   function playMusic(e) {
+    // e.preventPropagation();
     let icon = "bi-play-fill";
 
     if (e.target.classList.contains(icon)) {
@@ -63,11 +64,11 @@ const Layout = () => {
             type="button"
             className="play-button"
             title="Play/Pause"
-            onClick={playMusic}
-          >
+            >
             <i
               className="bi bi-play-fill"
               style={{ color: "white", fontSize: "2rem" }}
+              onClick={playMusic}
             ></i>
           </button>
         </div>
