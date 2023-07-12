@@ -536,7 +536,9 @@ nav.IV-nav ul {
     padding: 0;
     list-style: none;
 }
-
+ul{
+    padding: 0;
+}
 nav.IV-nav li {
     padding-top: 5px;
     overflow: hidden;
@@ -1060,6 +1062,14 @@ pre.ql-syntax {
         top: calc(50vh - 85vw);
         min-width: 65vw;
         font-size: smaller;
+    }
+    /* .btn{
+        width:20px;
+        height: 20px;
+    } */
+    .btn svg{
+        width:13px;
+        height: 13px;
     }
     .content-main {
         margin: 0;

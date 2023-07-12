@@ -111,9 +111,6 @@ export default function Projects({ ProjData }) {
             Other
           </div>
         </a>
-        <a href="#end" data-to-scrollspy-id="end">
-          End.
-        </a>
       </div>
       <div className="content-main">
         <Scrollspy>

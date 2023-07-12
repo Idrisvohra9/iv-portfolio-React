@@ -4,20 +4,35 @@ import { getCookie, deleteCookie } from "../tools/cookies";
 import { Helmet } from "react-helmet";
 export default function AdminPanel() {
   const { token } = useParams();
+  function showSideNav(e) {
+    e.target.classList.toggle("clicked");
+    if (e.target.classList.contains("clicked")) {
+      document.querySelector(".nav-scrollspy").style.display = "block";
+      // e.target.classList.remove("clicked");
+    } else {
+      document.querySelector(".nav-scrollspy").style.display = "none";
+    }
+  }
   if (getCookie("token") === token)
     return (
       <div className="container mt-4">
         <Helmet>
-        <title>Idris Vohra - Control Dashboard</title>
-        <meta name="description" content="Admin Panel for iv-portfolio."/>
-      </Helmet>
+          <title>Idris Vohra - Control Dashboard</title>
+          <meta name="description" content="Admin Panel for iv-portfolio." />
+        </Helmet>
         <h1>Admin Panel</h1>
         <div className="d-flex justify-content-between">
           <h3>Welcome Idris Vohra!</h3>
-          <button className="btn btn-dark d-flex justify-content-center align-items-center" onClick={()=>{
-            deleteCookie("token");
-            window.location.reload();
-          }} title="Logout">
+
+          <i className="bi bi-list" onClick={showSideNav}></i>
+          <button
+            className="btn btn-dark d-flex justify-content-center align-items-center"
+            onClick={() => {
+              deleteCookie("token");
+              window.location.reload();
+            }}
+            title="Logout"
+          >
             <svg
               height="20px"
               width="20px"
@@ -73,7 +88,10 @@ export default function AdminPanel() {
     );
   else {
     return (
-      <div className="container mt4 d-flex justify-content-center align-items-center" style={{height:"100vh"}}>
+      <div
+        className="container mt4 d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
         <h2>Invalid Personnel!</h2>
       </div>
     );
