@@ -8,13 +8,16 @@ export default function Stats(props) {
     backgroundColor: props.color
   }
   return (
-    <span className="d-flex w-100 align-items-center flex-row p-3 stats">
+    <span className="d-flex w-100 align-items-center flex-column p-3 stats">
+      <span className='d-flex align-items-center'>
+
       {props.icon && (
-        <img src={props.icon} alt="programming language icon" className="icon-outer me-1"/>
+        <img src={props.icon} alt="programming language icon" className="icon-outer"/>
       )}
         <span className="label p-3" style={{ fontWeight:"bold", fontSize:"2rem"}}>
           {props.label}
         </span>
+      </span>
         <span className="progress flex-grow-1" style={{width: "100%"}}>
           <span className={`progress-bar ${props.striped ? 'progress-bar-striped' : ""} progress-bar-animated bg-${props.color}`} role="progressbar"
             aria-label="stats" aria-valuenow={props.percent} aria-valuemin="0" aria-valuemax="100"

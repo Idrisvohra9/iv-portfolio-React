@@ -8,9 +8,10 @@ import css from "../Assets/Images/css.svg";
 import js from "../Assets/Images/js.svg";
 import html from "../Assets/Images/html.svg";
 import react from "../Assets/Images/react.svg";
+import mern from "../Assets/Images/mern2.png";
+import django from "../Assets/Images/django.svg";
 import { Helmet } from "react-helmet";
 import ProjectLoader from "./components/ProjectLoader";
-
 export default function Projects({ ProjData }) {
   function getProjectsByLang(lang) {
     return ProjData.data.filter((p) => {
@@ -57,31 +58,14 @@ export default function Projects({ ProjData }) {
           content="https://photos.app.goo.gl/ev1uhkPK6feYxmgb8"
         />
       </Helmet>
-      <div className="nav-scrollspy">
+      <div className="nav-scrollspy projects">
         <ProfileComp />
         <a href="#overview-proj" data-to-scrollspy-id="overview-proj">
           Projects Overview
         </a>
-        <a href="#python" data-to-scrollspy-id="python">
+        <a href="#mern-stack" data-to-scrollspy-id="mern-stack">
           <div className="d-flex align-items-center justify-content-center">
-            Python <img src={py} alt="python" className="icon ms-1" />
-          </div>
-        </a>
-        <a href="#css" data-to-scrollspy-id="css">
-          <div className="d-flex align-items-center justify-content-center">
-            CSS <img src={css} alt="css" className="icon ms-1" />
-          </div>
-        </a>
-        <a href="#js" data-to-scrollspy-id="js">
-          <div className="d-flex align-items-center justify-content-center">
-            JavaScript <img src={js} alt="javascript" className="icon ms-1" />
-          </div>
-        </a>
-        <a href="#mixed-vanilla" data-to-scrollspy-id="mixed-vanilla">
-          <div className="d-flex align-items-center justify-content-center">
-            <img src={html} alt="HTML" className="icon ms-1" /> +
-            <img src={css} alt="CSS" className="icon ms-1" /> +
-            <img src={js} alt="JavaScript" className="icon ms-1" />
+            <img src={mern} alt="MERN Stack" className="icon-mern" />
           </div>
         </a>
         <a href="#react" data-to-scrollspy-id="react">
@@ -93,6 +77,33 @@ export default function Projects({ ProjData }) {
           <div className="d-flex align-items-center justify-content-center">
             React Native{" "}
             <img src={react} alt="react native" className="icon ms-1" />
+          </div>
+        </a>
+        <a href="#django" data-to-scrollspy-id="django">
+          <div className="d-flex align-items-center justify-content-center">
+            dJango <img src={django} alt="react native" className="icon ms-1" />
+          </div>
+        </a>
+        <a href="#python" data-to-scrollspy-id="python">
+          <div className="d-flex align-items-center justify-content-center">
+            Python <img src={py} alt="python" className="icon ms-1" />
+          </div>
+        </a>
+        <a href="#mixed-vanilla" data-to-scrollspy-id="mixed-vanilla">
+          <div className="d-flex align-items-center justify-content-center">
+            <img src={html} alt="HTML" className="icon ms-1" /> +
+            <img src={css} alt="CSS" className="icon ms-1" /> +
+            <img src={js} alt="JavaScript" className="icon ms-1" />
+          </div>
+        </a>
+        <a href="#js" data-to-scrollspy-id="js">
+          <div className="d-flex align-items-center justify-content-center">
+            JavaScript <img src={js} alt="javascript" className="icon ms-1" />
+          </div>
+        </a>
+        <a href="#css" data-to-scrollspy-id="css">
+          <div className="d-flex align-items-center justify-content-center">
+            CSS <img src={css} alt="css" className="icon ms-1" />
           </div>
         </a>
         <a href="#other" data-to-scrollspy-id="other">
@@ -138,51 +149,13 @@ export default function Projects({ ProjData }) {
               </div>
             </div>
           </section>
-          <section id="python">
+          <section id="mern-stack">
             <h1>
-              Python <img src={py} alt="Python" className="icon-outer ms-2" />
+              MERN Stack{" "}
+              <img src={mern} alt="Python" className="icon-outer mern ms-2" />
             </h1>
-            {getProjectsByLang("python").length > 0 ? (
-              getProjectsByLang("python").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
-          </section>
-          <section id="css">
-            <h1>
-              CSS <img src={css} alt="CSS" className="icon-outer ms-2" />
-            </h1>
-            {getProjectsByLang("css").length > 0 ? (
-              getProjectsByLang("css").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
-          </section>
-          <section id="js">
-            <h1>
-              JavaScript <img src={js} alt="JS" className="icon-outer ms-2" />
-            </h1>
-            {getProjectsByLang("js").length > 0 ? (
-              getProjectsByLang("js").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
-          </section>
-          <section id="mixed-vanilla">
-            <h1>
-              Mixed Vainilla{" "}
-              <img src={html} alt="HTML" className="icon-outer ms-2" /> +
-              <img src={css} alt="CSS" className="icon-outer ms-2" /> +
-              <img src={js} alt="JavaScript" className="icon-outer ms-2" />
-            </h1>
-            {getProjectsByLang("mixed-vanilla").length > 0 ? (
-              getProjectsByLang("mixed-vanilla").map((props, i) => (
+            {getProjectsByLang("mern-stack").length > 0 ? (
+              getProjectsByLang("mern-stack").map((props, i) => (
                 <Project {...props} key={i} />
               ))
             ) : (
@@ -214,6 +187,71 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
+          <section id="django">
+            <h1>
+              dJango{" "}
+              <img src={django} alt="Python" className="icon-outer ms-2" />
+            </h1>
+            {getProjectsByLang("django").length > 0 ? (
+              getProjectsByLang("django").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
+          </section>
+          <section id="python">
+            <h1>
+              Python <img src={py} alt="Python" className="icon-outer ms-2" />
+            </h1>
+            {getProjectsByLang("python").length > 0 ? (
+              getProjectsByLang("python").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
+          </section>
+          <section id="mixed-vanilla">
+            <h1>
+              Mixed Vainilla{" "}
+              <img src={html} alt="HTML" className="icon-outer ms-2" /> +
+              <img src={css} alt="CSS" className="icon-outer ms-2" /> +
+              <img src={js} alt="JavaScript" className="icon-outer ms-2" />
+            </h1>
+            {getProjectsByLang("mixed-vanilla").length > 0 ? (
+              getProjectsByLang("mixed-vanilla").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
+          </section>
+          <section id="js">
+            <h1>
+              JavaScript <img src={js} alt="JS" className="icon-outer ms-2" />
+            </h1>
+            {getProjectsByLang("js").length > 0 ? (
+              getProjectsByLang("js").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
+          </section>
+          <section id="css">
+            <h1>
+              CSS <img src={css} alt="CSS" className="icon-outer ms-2" />
+            </h1>
+            {getProjectsByLang("css").length > 0 ? (
+              getProjectsByLang("css").map((props, i) => (
+                <Project {...props} key={i} />
+              ))
+            ) : (
+              <ProjectLoader />
+            )}
+          </section>
+
           <section id="other">
             <h1>Other</h1>
             {getProjectsByLang("other").length > 0 ? (

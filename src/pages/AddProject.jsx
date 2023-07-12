@@ -141,12 +141,14 @@ export default function AddProject() {
               setProjectData({ ...projectData, lang: e.target.value })
             }
           >
-            <option value="python">python</option>
-            <option value="css">css</option>
-            <option value="js">js</option>
-            <option value="mixed-vanilla">mixed-vanilla</option>
+            <option value="mern-stack">mern-stack</option>
             <option value="react">react</option>
             <option value="react-native">react-native</option>
+            <option value="django">django</option>
+            <option value="python">python</option>
+            <option value="mixed-vanilla">mixed-vanilla</option>
+            <option value="js">js</option>
+            <option value="css">css</option>
             <option value="other">other</option>
           </select>
         </div>

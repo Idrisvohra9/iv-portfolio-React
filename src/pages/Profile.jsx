@@ -256,7 +256,7 @@ export default function Profile() {
               <h2 className="mt-4">Frameworks</h2>
               <Stats label="Django" percent={86} icon={django}/>
               <Stats label="React" percent={80} color="green" icon={react}/>
-              <Stats label="React Native" percent={93} color="darkcyan" icon={react}/>
+              <Stats label="React Native" percent={53} color="darkcyan" icon={react}/>
 
               <h2 className="mt-4">Databases</h2>
               <Stats label="MySQL" percent={95} icon={mysql}/>
