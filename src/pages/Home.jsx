@@ -19,10 +19,7 @@ export default function Header() {
       document
         .querySelectorAll(".heading")
         .forEach((head) => (head.style.top = 220 - value + "px"));
-      document
-        .querySelectorAll(".button")
-        .forEach((btn) => (btn.style.top = 350 - value + "px"));
-
+      
       // If small screen:
       if (document.querySelector(".header-sm").checkVisibility()) {
         document.querySelector(".layer1").style.top = -20 - value + "px";
