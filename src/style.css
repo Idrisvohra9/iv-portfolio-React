@@ -840,6 +840,7 @@ a .icon {
 .icon-mern {
     width: 120px;
     height: 36px;
+    padding: 4px;
     object-fit: cover;
 }
 
@@ -975,7 +976,7 @@ pre.ql-syntax {
     width: 100%;
     height: 350px;
     object-fit: contain;
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 }
 
 .social-grid {
