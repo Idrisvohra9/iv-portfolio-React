@@ -19,16 +19,14 @@ export default function Header() {
       document
         .querySelectorAll(".heading")
         .forEach((head) => (head.style.top = 220 - value + "px"));
-      document
-        .querySelectorAll(".button")
-        .forEach((btn) => (btn.style.top = 350 - value + "px"));
-
       // If small screen:
       if (document.querySelector(".header-sm").checkVisibility()) {
         document.querySelector(".layer1").style.top = -20 - value + "px";
-        document.querySelector(".layer2").style.top = -20 + value + "px";
+        // document.querySelector(".layer2").style.top = -20 + value + "px";
         document.querySelector(".moon").style.left = -40 + value + "px";
         document.querySelector(".birds").style.left = 0 + value + "px";
+        document.querySelector(".birds").style.bottom = 0 + value + "px";
+
       } else {
         document.querySelector(".tentacles").style.left = -60 - value + "px";
         document.querySelector(".turtle").style.top = 60 - value + "px";
@@ -62,23 +60,23 @@ export default function Header() {
 
         <div className="background2">
           <img
-            src={require("../Assets/Images/layer1.png")}
-            alt="Parallax Image"
+            src={require("../Assets/Images/layer1.webp")}
+            alt="Parallax"
             className="parallax-image img-fluid layer1"
           />
           <img
-            src={require("../Assets/Images/layer2.png")}
-            alt="Parallax Image"
+            src={require("../Assets/Images/layer2.webp")}
+            alt="Parallax"
             className="parallax-image img-fluid layer2"
           />
           <img
-            src={require("../Assets/Images/moon.png")}
-            alt="Parallax Image"
+            src={require("../Assets/Images/moon.webp")}
+            alt="Parallax"
             className="parallax-image img-fluid moon"
           />
           <img
-            src={require("../Assets/Images/birds.png")}
-            alt="Parallax Image"
+            src={require("../Assets/Images/birds.webp")}
+            alt="Parallax"
             className="parallax-image img-fluid birds"
           />
         </div>
@@ -89,32 +87,32 @@ export default function Header() {
             Explore
           </button>
         </div>
-        <div className="spacer"></div>
       </header>
+        <div className="spacer"></div>
       <header style={{ scrollBehavior: "smooth" }} className="header-lg">
         <img
           src={require("../Assets/Images/ColorBackground.webp")}
-          alt="Parallax Image"
+          alt="Parallax"
           className="parallax-image img-fluid background"
         />
         <img
           src={require("../Assets/Images/ForegroundReefs.webp")}
-          alt="Parallax Image"
+          alt="Parallax"
           className="parallax-image img-fluid reefs"
         />
         <img
           src={require("../Assets/Images/Fishes.webp")}
-          alt="Parallax Image"
+          alt="Parallax"
           className="parallax-image img-fluid fishes"
         />
         <img
           src={require("../Assets/Images/turtle.webp")}
-          alt="Parallax Image"
+          alt="Parallax"
           className="img-fluid turtle"
         />
         <img
           src={require("../Assets/Images/tentacles.webp")}
-          alt="Parallax Image"
+          alt="Parallax"
           className="parallax-image img-fluid tentacles"
         />
         <h1 className="heading">Idris Vohra</h1>
