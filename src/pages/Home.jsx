@@ -88,8 +88,8 @@ export default function Header() {
             Explore
           </button>
         </div>
-      </header>
         <div className="spacer"></div>
+      </header>
       <header style={{ scrollBehavior: "smooth" }} className="header-lg">
         <img
           src={require("../Assets/Images/ColorBackground.webp")}

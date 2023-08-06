@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Footer from "./components/footer";
 import Scrollspy from "react-ui-scrollspy";
 import Project from "./components/Project";
@@ -21,13 +21,19 @@ export default function Projects({ ProjData }) {
   function searchProjects(e) {
     const SearchValue = e.target.value.toUpperCase();
     const projectCard = document.querySelectorAll(".card.project");
-
+    const projectSections = [
+      ...document.getElementsByClassName("project-section"),
+    ];
+    projectSections.map((section) => (section.style.display = "none"));
     for (const pc of projectCard) {
-      console.log(pc);
       let title = pc
         .querySelector(".card-header a.btn")
-        .innerHTML.toUpperCase();
+        .innerHTML.replace(`<SPAN CLASS="TEXT-MUTED MS-1">[`, "")
+        .replace("]</SPAN>", "")
+        .toUpperCase();
+
       if (title.includes(SearchValue)) {
+        pc.parentElement.style.display = "block";
         pc.style.display = "block";
       } else {
         pc.style.display = "none";
@@ -146,7 +152,7 @@ export default function Projects({ ProjData }) {
               </div>
             </div>
           </section>
-          <section id="mern-stack">
+          <section id="mern-stack" className="project-section">
             <h1>
               MERN Stack{" "}
               <img src={mern} alt="Python" className="icon-outer mern ms-2" />
@@ -159,7 +165,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="react">
+          <section id="react" className="project-section">
             <h1>
               React <img src={react} alt="React" className="icon-outer ms-2" />
             </h1>
@@ -171,7 +177,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="react-native">
+          <section id="react-native" className="project-section">
             <h1>
               React Native{" "}
               <img src={react} alt="React Native" className="icon-outer ms-2" />
@@ -184,7 +190,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="django">
+          <section id="django" className="project-section">
             <h1>
               dJango{" "}
               <img src={django} alt="Python" className="icon-outer ms-2" />
@@ -197,7 +203,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="python">
+          <section id="python" className="project-section">
             <h1>
               Python <img src={py} alt="Python" className="icon-outer ms-2" />
             </h1>
@@ -209,7 +215,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="mixed-vanilla">
+          <section id="mixed-vanilla" className="project-section">
             <h1>
               Mixed Vainilla{" "}
               <img src={html} alt="HTML" className="icon-outer ms-2" /> +
@@ -224,7 +230,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="js">
+          <section id="js" className="project-section">
             <h1>
               JavaScript <img src={js} alt="JS" className="icon-outer ms-2" />
             </h1>
@@ -236,7 +242,7 @@ export default function Projects({ ProjData }) {
               <ProjectLoader />
             )}
           </section>
-          <section id="css">
+          <section id="css" className="project-section">
             <h1>
               CSS <img src={css} alt="CSS" className="icon-outer ms-2" />
             </h1>
@@ -249,7 +255,7 @@ export default function Projects({ ProjData }) {
             )}
           </section>
 
-          <section id="other">
+          <section id="other" className="project-section">
             <h1>Other</h1>
             {getProjectsByLang("other").length > 0 ? (
               getProjectsByLang("other").map((props, i) => (
