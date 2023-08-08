@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../Assets/Images/logo1.png";
+import logo from "../../Assets/Images/logo1.webp";
 import youtube from "../../Assets/Images/youtube.svg";
 import instagram from "../../Assets/Images/instagram.svg";
 import github from "../../Assets/Images/github.svg";

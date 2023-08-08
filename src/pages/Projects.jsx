@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import Scrollspy from "react-ui-scrollspy";
 import Project from "./components/Project";
 import ProfileComp from "./components/ProfileComp";
@@ -12,33 +12,17 @@ import mern from "../Assets/Images/mern2.png";
 import django from "../Assets/Images/django.svg";
 import { Helmet } from "react-helmet";
 import ProjectLoader from "./components/ProjectLoader";
+import Search from "./components/Search";
+import FavouriteProject from "./components/FavouriteProject";
 export default function Projects({ ProjData }) {
+  const projects = ProjData?.data;
   function getProjectsByLang(lang) {
-    return ProjData.data.filter((p) => {
+    return projects.filter((p) => {
       return p.lang === lang;
     });
   }
-  function searchProjects(e) {
-    const SearchValue = e.target.value.toUpperCase();
-    const projectCard = document.querySelectorAll(".card.project");
-    const projectSections = [
-      ...document.getElementsByClassName("project-section"),
-    ];
-    projectSections.map((section) => (section.style.display = "none"));
-    for (const pc of projectCard) {
-      let title = pc
-        .querySelector(".card-header a.btn")
-        .innerHTML.replace(`<SPAN CLASS="TEXT-MUTED MS-1">[`, "")
-        .replace("]</SPAN>", "")
-        .toUpperCase();
-
-      if (title.includes(SearchValue)) {
-        pc.parentElement.style.display = "block";
-        pc.style.display = "block";
-      } else {
-        pc.style.display = "none";
-      }
-    }
+  function getFavourites() {
+    return projects.filter((p) => "favourite" in p && p.favourite === true);
   }
   return (
     <div className="d-flex flex-lg-row main">
@@ -68,6 +52,9 @@ export default function Projects({ ProjData }) {
         <ProfileComp />
         <a href="#overview-proj" data-to-scrollspy-id="overview-proj">
           Projects Overview
+        </a>
+        <a href="#overview-proj" data-to-scrollspy-id="favourites">
+          Favourites
         </a>
         <a href="#mern-stack" data-to-scrollspy-id="mern-stack">
           <div className="d-flex align-items-center justify-content-center">
@@ -140,16 +127,22 @@ export default function Projects({ ProjData }) {
               The projects may take a moment to load, but I assure you it will
               be worth the wait. 😉
             </b>
-            <div className="d-flex justify-content-between mt-3 align-items-center">
-              <div className="input-group w-50 flex-nowrap">
-                <input
-                  type="text"
-                  placeholder="Find projects"
-                  className="search-input"
-                  onChange={searchProjects}
-                />
-                <span className="input-group-text search-btn bi-search"></span>
-              </div>
+            <Search />
+          </section>
+          <section id="favourites" className="project-section">
+            <h1>💖 Projects</h1>
+            <div className="w-100 row gap-2 gap-lg-4 justify-content-center align-content-center">
+              {getFavourites().length > 0 ? (
+                getFavourites().map((props, i) => (
+                  <FavouriteProject
+                    key={i}
+                    title={props.title}
+                    html={props.htmlId}
+                  />
+                ))
+              ) : (
+                <ProjectLoader />
+              )}
             </div>
           </section>
           <section id="mern-stack" className="project-section">
