@@ -2,7 +2,7 @@ import React from "react";
 import Scrollspy from "react-ui-scrollspy";
 import Start from "./components/start";
 import ProfileComp from "./components/ProfileComp";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 import Stats from "./components/stats";
 import qrCode from "../Assets/Images/QRCODE.webp";
 import AutoTyper from "./components/autoTyper";

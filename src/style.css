@@ -524,7 +524,7 @@ nav.IV-nav {
     position: fixed;
     width: 50%;
     height: auto;
-    z-index: 2;
+    z-index: 10;
     background-color: #69b4c393;
     backdrop-filter: blur(10px) saturate(3);
     -webkit-clip-path: polygon(0 1%, 100% 0, 82% 100%, 18% 100%);
@@ -594,11 +594,12 @@ h5 {
 
 .nav-scrollspy {
     position: fixed;
-    top: calc(50vh - 22vw);
+    top: 0 !important;
     left: 0;
     z-index: 2;
     width: 20vw;
     overflow: visible;
+    height: 100%;
     padding: 2rem 1rem 2rem 1rem;
     -webkit-clip-path: polygon(-26% -4%, 100% 15%, 100% 85%, 0% 100%);
     clip-path: polygon(-26% -4%, 100% 15%, 100% 85%, 0% 100%);
@@ -693,7 +694,8 @@ a:hover {
 .IV-footer {
     backdrop-filter: blur(10px) saturate(3);
     background-color: #69b4c393;
-    filter: drop-shadow(0 0 10px rgba(128, 0, 128, 0.72));
+    margin-top: 1rem;
+    /* filter: drop-shadow(0 0 10px rgba(128, 0, 128, 0.72)); */
     color: var(--secondary-clr);
     border: 5px solid var(--tertiary-clr);
     border-right: none;
@@ -979,9 +981,12 @@ pre.ql-syntax {
     height: 150px;
     border-radius: 15px;
     display: flex;
+    overflow: hidden;
     flex-direction: column;
-    background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
     position: relative;
+}
+.favourite-card .top-section a{
+    background-color: transparent !important;
 }
 
 .favourite-card .top-section .border {
@@ -992,6 +997,7 @@ pre.ql-syntax {
     top: -10px;
     background: var(--primary-clr);
     position: relative;
+    z-index: 4;
     transform: skew(-40deg);
     box-shadow: -10px -10px 0 0 var(--primary-clr);
 }
@@ -1002,6 +1008,8 @@ pre.ql-syntax {
     width: 15px;
     height: 15px;
     top: 0;
+    z-index: 4;
+
     right: -15px;
     background: rgba(255, 255, 255, 0);
     border-top-left-radius: 10px;
@@ -1011,6 +1019,7 @@ pre.ql-syntax {
 .favourite-card .top-section::before {
     content: "";
     position: absolute;
+    z-index: 4;
     top: 30px;
     left: 0;
     background: rgba(255, 255, 255, 0);
@@ -1032,10 +1041,12 @@ pre.ql-syntax {
 .favourite-card .top-section .icons .logo {
     height: 100%;
     padding: 7px 0 7px 15px;
+    position: relative;
+    z-index: 6;
 }
 .main-logo{
     position: absolute;
-    top: -5px;
+    top: -12px;
     width: 60px;
     height: 30px;
 }
@@ -1050,7 +1061,21 @@ pre.ql-syntax {
 
 .favourite-card .bottom-section .title {
     display: block;
-    font-size: 17px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.favourite-card .project-img{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+}
+.favourite-card .bottom-section .sub-text {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 18px;
     font-weight: bolder;
     color: white;
     text-align: center;

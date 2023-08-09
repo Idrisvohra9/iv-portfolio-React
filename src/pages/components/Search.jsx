@@ -7,7 +7,11 @@ export default function Search() {
     const projectSections = [
       ...document.getElementsByClassName("project-section"),
     ];
-    projectSections.map((section) => (section.style.display = "none"));
+    if(SearchValue.length > 0) {
+      projectSections.map((section) => (section.style.display = "none"));
+    } else{
+      projectSections.map((section) => (section.style.display = "block"));
+    }
     for (const pc of projectCard) {
       let title = pc
         .querySelector(".card-header a.btn")

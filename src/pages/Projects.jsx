@@ -1,5 +1,5 @@
 import React from "react";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 import Scrollspy from "react-ui-scrollspy";
 import Project from "./components/Project";
 import ProfileComp from "./components/ProfileComp";
@@ -15,7 +15,7 @@ import ProjectLoader from "./components/ProjectLoader";
 import Search from "./components/Search";
 import FavouriteProject from "./components/FavouriteProject";
 export default function Projects({ ProjData }) {
-  const projects = ProjData?.data;
+  const projects = ProjData.data;
   function getProjectsByLang(lang) {
     return projects.filter((p) => {
       return p.lang === lang;
@@ -134,11 +134,7 @@ export default function Projects({ ProjData }) {
             <div className="w-100 row gap-2 gap-lg-4 justify-content-center align-content-center">
               {getFavourites().length > 0 ? (
                 getFavourites().map((props, i) => (
-                  <FavouriteProject
-                    key={i}
-                    title={props.title}
-                    html={props.htmlId}
-                  />
+                  <FavouriteProject key={i} {...props} />
                 ))
               ) : (
                 <ProjectLoader />

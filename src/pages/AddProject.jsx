@@ -37,6 +37,7 @@ export default function AddProject() {
     github: "",
     codepen: "",
     skill: "beginner",
+    favourite: false,
   });
   const [Images, setImages] = useState([]);
   const placeholder = request !== "add" ? "update" : "add";
@@ -51,8 +52,6 @@ export default function AddProject() {
     }
   }, [id, placeholder]);
   const addProject = async (e) => {
-    // const formData = new FormData();
-
     e.preventDefault();
     if (request === "add") {
       if (Images.length > 0) {
@@ -119,7 +118,7 @@ export default function AddProject() {
           <input
             type="text"
             className="form-control"
-            value={projectData?.title}
+            value={projectData.title}
             required
             onChange={(e) =>
               setProjectData({
@@ -135,7 +134,7 @@ export default function AddProject() {
           <select
             className="form-select"
             aria-label="Default select example"
-            value={projectData?.lang}
+            value={projectData.lang}
             required
             onChange={(e) =>
               setProjectData({ ...projectData, lang: e.target.value })
@@ -157,7 +156,7 @@ export default function AddProject() {
           <select
             className="form-select"
             aria-label="Default select example"
-            value={projectData?.skill}
+            value={projectData.skill}
             required
             onChange={(e) =>
               setProjectData({ ...projectData, skill: e.target.value })
@@ -174,7 +173,7 @@ export default function AddProject() {
           </label>
           <ReactQuill
             className="bg-light input"
-            value={projectData?.description}
+            value={projectData.description}
             required
             onChange={(newValue) =>
               setProjectData({ ...projectData, description: newValue })
@@ -192,12 +191,29 @@ export default function AddProject() {
             accept=".gif, .jpeg, .jpg, .png, .webp"
           />
         </div>
+        <div className="mb-3 form-check form-switch">
+          <label className="form-check-label" htmlFor="fav">
+            Favourite
+          </label>
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            onChange={() =>
+              setProjectData({
+                ...projectData,
+                favourite: !projectData.favourite,
+              })
+            }
+            id="fav"
+          />
+        </div>
         <div className="input-group mb-3">
           <span className="input-group-text">Github Link:</span>
           <input
             type="text"
             className="form-control"
-            value={projectData?.github}
+            value={projectData.github}
             onChange={(e) =>
               setProjectData({ ...projectData, github: e.target.value })
             }
@@ -209,10 +225,11 @@ export default function AddProject() {
           <input
             type="text"
             className="form-control"
-            value={projectData?.codepen}
+            value={projectData.codepen}
             onChange={(e) =>
               setProjectData({ ...projectData, codepen: e.target.value })
             }
+            defaultChecked={projectData.favourite}
           />
         </div>
         <div className="d-flex justify-content-evenly align-items-center">

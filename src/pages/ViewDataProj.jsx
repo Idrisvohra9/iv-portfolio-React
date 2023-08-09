@@ -14,15 +14,25 @@ import Search from "./components/Search";
 
 export default function ViewDataProj({ ProjData }) {
   const [projects, setProjects] = useState(ProjData.data);
+  console.log(ProjData);
   function getProjectsByLang(lang) {
+    console.log(lang);
     return projects.filter((p) => {
       return p.lang === lang;
     });
   }
   async function deleteProject(id) {
-    await axios
-      .delete(`${process.env.REACT_APP_BACKEND}project/${id}`)
-      .then(({ data }) => setProjects(data));
+    const result = window.confirm(
+      `Are you sure you want to delete this project? with Id:${id}`
+    );
+    if (result) {
+      await axios
+        .delete(`${process.env.REACT_APP_BACKEND}project/${id}`)
+        .then(({ data }) => {
+          setProjects(data);
+          window.alert("Project Delete Successfully.");
+        });
+    }
   }
   return (
     <div className="d-flex flex-lg-row main">

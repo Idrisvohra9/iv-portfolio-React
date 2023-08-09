@@ -3,7 +3,12 @@ import logo from "../../Assets/Images/logo1.webp";
 import { storage } from "../../firebase";
 import { listAll, ref, getDownloadURL } from "firebase/storage";
 
-export default function FavouriteProjects({title="Placeholder", htmlId}) {
+export default function FavouriteProjects({
+  title = "Placeholder",
+  htmlId,
+  skill,
+  lang,
+}) {
   const [Image, setImage] = useState("");
   const ImageListRef = ref(storage, `${htmlId}/`);
   useEffect(() => {
@@ -23,17 +28,28 @@ export default function FavouriteProjects({title="Placeholder", htmlId}) {
   }, []);
   return (
     <div className="favourite-card col-sm-6 col-lg-4">
-      <a className="top-section" href={`#${htmlId}`}>
+      <a
+        className="top-section"
+        href={`#${htmlId}`}
+        data-bs-toggle="collapse"
+        onClick={() =>
+          document.getElementById(htmlId).scrollIntoView({ behavior: "smooth" })
+        }
+      >
         <div className="border"></div>
         <div className="icons">
           <div className="logo">
-            <img src={logo} alt="Website Logo" className="main-logo"/>
+            <img src={logo} alt="Website Logo" className="main-logo" />
           </div>
         </div>
-        <img src={Image} alt="Project Thumbnail" className="img-responsive"/>
+        <img src={Image} alt="Project Thumbnail" className="project-img" />
       </a>
       <div className="bottom-section">
         <span className="title">{title}</span>
+        <div className="sub-text">
+          <span className="text-uppercase">{lang}</span>
+          <span className="text-muted">[{skill}]</span>
+        </div>
         <div className="row row1">
           <div className="item">
             <span className="big-text">🗿</span>
