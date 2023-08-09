@@ -964,12 +964,12 @@ pre.ql-syntax {
 .favourite-card {
     width: 12rem;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
     background: var(--primary-clr);
     padding: 5px;
     overflow: hidden;
-    /* margin: .7rem !important; */
     border: 3px solid var(--primary-light);
-    /* box-shadow: 0 0 10px black; */
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -1057,11 +1057,13 @@ pre.ql-syntax {
 .favourite-card .bottom-section {
     margin-top: 15px;
     padding: 10px 5px;
+    margin-top: auto;
 }
 
 .favourite-card .bottom-section .title {
     display: block;
     font-size: 20px;
+    text-transform: uppercase;
     font-weight: bolder;
     color: white;
     text-align: center;
@@ -1071,15 +1073,17 @@ pre.ql-syntax {
     width: 100%;
     position: absolute;
     height: 100%;
+    object-fit: cover;
 }
 .favourite-card .bottom-section .sub-text {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bolder;
-    color: white;
+    color: var(--tertiary-clr);
     text-align: center;
-    letter-spacing: 2px;
+    /* letter-spacing: 2px; */
 }
 
 .favourite-card .bottom-section .row {

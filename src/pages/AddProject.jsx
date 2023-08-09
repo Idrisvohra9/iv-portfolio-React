@@ -67,9 +67,7 @@ export default function AddProject() {
     } else {
       await axios
         .patch(`${process.env.REACT_APP_BACKEND}project/${id}`, projectData)
-        .then(({ success }) =>
-          success ? document.querySelector(".toast").classList.add("show") : ""
-        )
+        .then(() => document.querySelector(".toast").classList.add("show"))
         .catch((err) => window.alert(err));
     }
   };
