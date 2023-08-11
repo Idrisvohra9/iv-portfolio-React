@@ -1,4 +1,3 @@
-import React from "react";
 import Footer from "./components/footer";
 import Scrollspy from "react-ui-scrollspy";
 import Project from "./components/Project";
@@ -10,44 +9,52 @@ import html from "../Assets/Images/html.svg";
 import react from "../Assets/Images/react.svg";
 import mern from "../Assets/Images/mern2.png";
 import django from "../Assets/Images/django.svg";
-import { Helmet } from "react-helmet";
+import Head from "./components/Head";
 import ProjectLoader from "./components/ProjectLoader";
 import Search from "./components/Search";
 import FavouriteProject from "./components/FavouriteProject";
-export default function Projects({ ProjData }) {
-  const projects = ProjData.data;
+import useFetch from "../Hook/useFetch";
+export default function Projects() {
+  const { data, loading, error, reFetch } = useFetch();
+  if (error) {
+    console.log(error);
+  }
   function getProjectsByLang(lang) {
-    return projects.filter((p) => {
-      return p.lang === lang;
-    });
+    const filteredProjects = data.filter((p) => p.lang === lang);
+    if (filteredProjects.length > 0) {
+      return filteredProjects.map((props, i) => <Project key={i} {...props} />);
+    } else {
+      if (loading) {
+        return <ProjectLoader />;
+      } else {
+        return <h3 className="m-3">No Projects</h3>;
+      }
+    }
   }
   function getFavourites() {
-    return projects.filter((p) => "favourite" in p && p.favourite === true);
+    const filteredProjects = data.filter(
+      (p) => "favourite" in p && p.favourite === true
+    );
+    if (filteredProjects.length > 0) {
+      return filteredProjects.map((props, i) => (
+        <FavouriteProject key={i} {...props} />
+      ));
+    } else {
+      if (loading) {
+        return <ProjectLoader />;
+      } else {
+        return <h3 className="m-3">No Projects</h3>;
+      }
+    }
   }
+
   return (
     <div className="d-flex flex-lg-row main">
-      <Helmet>
-        <title>Idris Vohra - All Projects</title>
-        <meta
-          name="description"
-          content="The webpage showcasing all the data.data done by me (Idris Vohra)."
-        />
-        <meta
-          name="keywords"
-          content="Projects, Showcase, Idris Vohra, Idris, iv-portfolio, HTML5, CSS, React, React Native, JavaScript, Web developer, Application developer"
-        />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="Idris Vohra" />
-        <meta name="twitter:title" content="Idris Vohra - Portfolio" />
-        <meta
-          name="twitter:description"
-          content="This is a portfolio website of Full stack MERN Web developer Idris Vohra."
-        />
-        <meta
-          name="twitter:image"
-          content="https://photos.app.goo.gl/ev1uhkPK6feYxmgb8"
-        />
-      </Helmet>
+      <Head
+        title="Projects"
+        keywords="Projects, Showcase, Idris Vohra, Idris, iv-portfolio, HTML5, CSS, React, React Native, JavaScript, Web developer, Application developer"
+        description="The webpage showcasing all the Projects made by me (Idris Vohra)."
+      />
       <div className="nav-scrollspy projects">
         <ProfileComp />
         <a href="#overview-proj" data-to-scrollspy-id="overview-proj">
@@ -127,18 +134,12 @@ export default function Projects({ ProjData }) {
               The projects may take a moment to load, but I assure you it will
               be worth the wait. 😉
             </b>
-            <Search />
+            <Search refetch={reFetch} />
           </section>
           <section id="favourites" className="project-section">
             <h1>💖 Projects</h1>
             <div className="w-100 row gap-2 gap-lg-4 justify-content-center align-content-center">
-              {getFavourites().length > 0 ? (
-                getFavourites().map((props, i) => (
-                  <FavouriteProject key={i} {...props} />
-                ))
-              ) : (
-                <ProjectLoader />
-              )}
+              {getFavourites()}
             </div>
           </section>
           <section id="mern-stack" className="project-section">
@@ -146,63 +147,33 @@ export default function Projects({ ProjData }) {
               MERN Stack{" "}
               <img src={mern} alt="Python" className="icon-outer mern ms-2" />
             </h1>
-            {getProjectsByLang("mern-stack").length > 0 ? (
-              getProjectsByLang("mern-stack").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("mern-stack")}
           </section>
           <section id="react" className="project-section">
             <h1>
               React <img src={react} alt="React" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("react").length > 0 ? (
-              getProjectsByLang("react").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("react")}
           </section>
           <section id="react-native" className="project-section">
             <h1>
               React Native{" "}
               <img src={react} alt="React Native" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("react-native").length > 0 ? (
-              getProjectsByLang("react-native").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("react-native")}
           </section>
           <section id="django" className="project-section">
             <h1>
               dJango{" "}
               <img src={django} alt="Python" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("django").length > 0 ? (
-              getProjectsByLang("django").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("django")}
           </section>
           <section id="python" className="project-section">
             <h1>
               Python <img src={py} alt="Python" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("python").length > 0 ? (
-              getProjectsByLang("python").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("python")}
           </section>
           <section id="mixed-vanilla" className="project-section">
             <h1>
@@ -211,48 +182,24 @@ export default function Projects({ ProjData }) {
               <img src={css} alt="CSS" className="icon-outer ms-2" /> +
               <img src={js} alt="JavaScript" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("mixed-vanilla").length > 0 ? (
-              getProjectsByLang("mixed-vanilla").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("mixed-vanilla")}
           </section>
           <section id="js" className="project-section">
             <h1>
               JavaScript <img src={js} alt="JS" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("js").length > 0 ? (
-              getProjectsByLang("js").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("js")}
           </section>
           <section id="css" className="project-section">
             <h1>
               CSS <img src={css} alt="CSS" className="icon-outer ms-2" />
             </h1>
-            {getProjectsByLang("css").length > 0 ? (
-              getProjectsByLang("css").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("css")}
           </section>
 
           <section id="other" className="project-section">
             <h1>Other</h1>
-            {getProjectsByLang("other").length > 0 ? (
-              getProjectsByLang("other").map((props, i) => (
-                <Project {...props} key={i} />
-              ))
-            ) : (
-              <ProjectLoader />
-            )}
+            {getProjectsByLang("other")}
           </section>
           <section id="end">
             <Footer />

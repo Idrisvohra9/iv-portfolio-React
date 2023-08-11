@@ -5,32 +5,16 @@ import linkedIn from "../Assets/Images/linkedin.svg";
 import whatsapp from "../Assets/Images/whatsapp.svg";
 import gmail from "../Assets/Images/gmail.svg";
 import insta from "../Assets/Images/instagram.svg";
-import { Helmet } from "react-helmet";
+import Head from "./components/Head";
 
 export default function Contact() {
-  function scrollToTop() {
-    window.scrollTo(0, 0);
-  }
   return (
-    <div className="main" onLoad={scrollToTop}>
-      <Helmet>
-        <title>Idris Vohra - Contact</title>
-        <meta
-          name="description"
-          content="Contact Options page of Idris Vohra"
-        />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="Idris Vohra" />
-        <meta name="twitter:title" content="Idris Vohra - Portfolio" />
-        <meta
-          name="twitter:description"
-          content="This is a portfolio website of Full stack MERN Web developer Idris Vohra."
-        />
-        <meta
-          name="twitter:image"
-          content="https://photos.app.goo.gl/ev1uhkPK6feYxmgb8"
-        />
-      </Helmet>
+    <div className="main">
+      <Head
+        title="Contact"
+        description="Contact Options page of Idris Vohra"
+        keywords="Idris, Vohra, Idris Vohra, Contact, MERN Stack, Developer, JavaScript"
+      />
       <div className="container-fluid">
         <div className="ocean">
           <div className="wave"></div>
@@ -39,7 +23,7 @@ export default function Contact() {
         <div className="d-flex flex-lg-row">
           <div className="nav-scrollspy">
             <ProfileComp />
-            <a href="#all-socials" data-to-scrollspy-id="whats">
+            <a href="#all-socials" data-to-scrollspy-id="all-socials">
               All Socials
             </a>
           </div>
@@ -56,7 +40,7 @@ export default function Contact() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Whatsapp <img src={whatsapp} alt="" />
+                      Whatsapp <img src={whatsapp} alt="Whatsapp" />
                     </a>
                     <a
                       href="mailto: idrishaider987@gmail.com"
@@ -64,7 +48,7 @@ export default function Contact() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Email <img src={gmail} alt="" />
+                      Email <img src={gmail} alt="Gmail" />
                     </a>
                     <a
                       href="https://www.instagram.com/idris_haider/"
@@ -72,7 +56,7 @@ export default function Contact() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Insta <img src={insta} alt="" />
+                      Insta <img src={insta} alt="Instagram" />
                     </a>
                     <a
                       href="https://www.linkedin.com/in/idris-vohra-589106256"
@@ -81,7 +65,7 @@ export default function Contact() {
                       rel="noreferrer"
                     >
                       {" "}
-                      LinkedIn <img src={linkedIn} alt="" />
+                      LinkedIn <img src={linkedIn} alt="LinkedIn" />
                     </a>
                   </div>
                 </div>

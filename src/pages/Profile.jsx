@@ -6,7 +6,6 @@ import Footer from "./components/footer";
 import Stats from "./components/stats";
 import qrCode from "../Assets/Images/QRCODE.webp";
 import AutoTyper from "./components/autoTyper";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import py from "../Assets/Images/python.svg";
 import css from "../Assets/Images/css.svg";
@@ -18,34 +17,16 @@ import java from "../Assets/Images/java.svg";
 import mongo from "../Assets/Images/mongo.svg";
 import mysql from "../Assets/Images/mysql.svg";
 import django from "../Assets/Images/django.svg";
+import Head from "./components/Head";
+
 export default function Profile() {
-  function scrollToTop() {
-    window.scrollTo(0, 0);
-  }
   return (
-    <div className="d-flex flex-lg-row main" onLoad={scrollToTop}>
-      <Helmet>
-        <title>Idris Vohra - Profile</title>
-        <meta
-          name="description"
-          content="Webpage displaying the profile and realted information of Idris Vohra."
-        />
-        <meta
-          name="keywords"
-          content="Profile, Overview, Idris Vohra, Idris, iv-portfolio, HTML5, CSS, React, React Native, JavaScript, Web developer, Application developer"
-        />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="Idris Vohra" />
-        <meta name="twitter:title" content="Idris Vohra - Portfolio" />
-        <meta
-          name="twitter:description"
-          content="This is a portfolio website of Full stack MERN Web developer Idris Vohra."
-        />
-        <meta
-          name="twitter:image"
-          content="https://photos.app.goo.gl/ev1uhkPK6feYxmgb8"
-        />
-      </Helmet>
+    <div className="d-flex flex-lg-row main">
+      <Head
+        title="Profile"
+        description="This is a portfolio website of Full stack MERN Web developer Idris Vohra."
+        keywords="Profile, Overview, Idris Vohra, Idris, iv-portfolio, HTML5, CSS, React, React Native, JavaScript, Web developer, Application developer"
+      />
       <div className="nav-scrollspy">
         <ProfileComp />
         <a href="#start" data-to-scrollspy-id="start">
@@ -251,17 +232,32 @@ export default function Profile() {
               <Stats label="CSS" percent={95} color="blue" icon={css} />
               <Stats label="SCSS" percent={80} color="blue" icon={css} />
               <Stats label="JS" percent={85} color="green" icon={js} />
-              <Stats label="Java" percent={90} color="dark" icon={java}/>
+              <Stats label="Java" percent={90} color="dark" icon={java} />
 
               <h2 className="mt-4">Frameworks</h2>
-              <Stats label="Django" percent={86} icon={django}/>
-              <Stats label="React" percent={80} color="green" icon={react}/>
-              <Stats label="React Native" percent={53} color="darkcyan" icon={react}/>
+              <Stats label="Django" percent={86} icon={django} />
+              <Stats label="React" percent={80} color="green" icon={react} />
+              <Stats
+                label="React Native"
+                percent={53}
+                color="darkcyan"
+                icon={react}
+              />
 
               <h2 className="mt-4">Databases</h2>
-              <Stats label="MySQL" percent={95} icon={mysql}/>
-              <Stats label="Oracle" percent={90} color="crimson" icon={oracle}/>
-              <Stats label="MongoDB" percent={93} color="magenta" icon={mongo}/>
+              <Stats label="MySQL" percent={95} icon={mysql} />
+              <Stats
+                label="Oracle"
+                percent={90}
+                color="crimson"
+                icon={oracle}
+              />
+              <Stats
+                label="MongoDB"
+                percent={93}
+                color="magenta"
+                icon={mongo}
+              />
             </div>
           </section>
           <section id="hire-me">

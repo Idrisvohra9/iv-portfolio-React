@@ -390,7 +390,7 @@ span.stars:nth-child(10) {
     position: fixed;
     left: 10px;
     top: 10px;
-    z-index: 10;
+    z-index: 11;
     display: none;
 }
 
@@ -596,7 +596,7 @@ h5 {
     position: fixed;
     top: 0 !important;
     left: 0;
-    z-index: 2;
+    z-index: 10;
     width: 20vw;
     overflow: visible;
     height: 100%;
@@ -1114,6 +1114,7 @@ pre.ql-syntax {
     padding: 10px;
     border-radius: 20px;
     border: 3px solid var(--primary-light);
+    margin-bottom: 20px;
 }
 
 .project-section h1 {
@@ -1166,7 +1167,9 @@ pre.ql-syntax {
     grid-template-columns: auto auto auto;
     gap: 20px;
 }
-
+.input-group{
+    width:unset;
+}
 .search-input {
     width: 100%;
     padding: 0 1rem;

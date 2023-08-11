@@ -10,21 +10,19 @@ import Admin from "./pages/Admin";
 import AdminPanel from "./pages/AdminPanel";
 import ViewDataProj from './pages/ViewDataProj';
 import AddProject from './pages/AddProject';
-import useFetch from './Hook/useFetch';
 
 function App() {
-  const data = useFetch();
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="profile" element={<Profile />} />
-          <Route path="projects" element={<Projects ProjData={data}/>} />
+          <Route path="projects" element={<Projects/>} />
           <Route path="contact" element={<Contact />} />
         </Route>
         <Route path="admin" element={<Admin />} />
         <Route path="admin/dashboard/:token/" element={<AdminPanel />} >
-          <Route index exact element={<ViewDataProj ProjData={data}/>} />
+          <Route index exact element={<ViewDataProj/>} />
           <Route path=":request" element={<AddProject />} />
         </Route>
         <Route path="*" element={<NoPage />} />

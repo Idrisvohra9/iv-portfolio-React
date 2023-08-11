@@ -16,26 +16,27 @@ export default function Header() {
     // console.log();
     window.addEventListener("scroll", () => {
       let value = window.scrollY;
-      document
-        .querySelectorAll(".heading")
-        .forEach((head) => (head.style.top = 220 - value + "px"));
-      
-      // If small screen:
-      if (document.querySelector(".header-sm").checkVisibility()) {
-        document.querySelector(".layer1").style.top = -20 - value + "px";
-        // document.querySelector(".layer2").style.top = -20 + value + "px";
-        document.querySelector(".moon").style.left = -40 + value + "px";
-        document.querySelector(".birds").style.left = 0 + value + "px";
-        document.querySelector(".birds").style.bottom = 0 + value + "px";
+      if (document.body.contains(document.querySelector(".heading"))) {
+        document
+          .querySelectorAll(".heading")
+          .forEach((head) => (head.style.top = 220 - value + "px"));
 
-      } else {
-        document.querySelector(".tentacles").style.left = -60 - value + "px";
-        document.querySelector(".turtle").style.top = 60 - value + "px";
-        document.querySelector(".turtle").style.right = 210 - value + "px";
-      }
+        // If small screen:
+        if (document.querySelector(".header-sm")?.checkVisibility()) {
+          document.querySelector(".layer1").style.top = -20 - value + "px";
+          // document.querySelector(".layer2").style.top = -20 + value + "px";
+          document.querySelector(".moon").style.left = -40 + value + "px";
+          document.querySelector(".birds").style.left = 0 + value + "px";
+          document.querySelector(".birds").style.bottom = 0 + value + "px";
+        } else {
+          document.querySelector(".tentacles").style.left = -60 - value + "px";
+          document.querySelector(".turtle").style.top = 60 - value + "px";
+          document.querySelector(".turtle").style.right = 210 - value + "px";
+        }
 
-      if (Number.parseInt(value) >= clientHeight / 2 - 10) {
-        navigate("/profile");
+        if (Number.parseInt(value) >= clientHeight / 2 - 10) {
+          navigate("/profile");
+        }
       }
     });
   }, [clientHeight, navigate]);

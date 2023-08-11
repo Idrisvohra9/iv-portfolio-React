@@ -67,7 +67,10 @@ export default function AddProject() {
     } else {
       await axios
         .patch(`${process.env.REACT_APP_BACKEND}project/${id}`, projectData)
-        .then(() => document.querySelector(".toast").classList.add("show"))
+        .then(() => {
+          document.querySelector(".toast").classList.add("show");
+          alert("Updated!");
+        })
         .catch((err) => window.alert(err));
     }
   };
@@ -203,6 +206,7 @@ export default function AddProject() {
                 favourite: !projectData.favourite,
               })
             }
+            value={projectData.favourite}
             id="fav"
           />
         </div>
