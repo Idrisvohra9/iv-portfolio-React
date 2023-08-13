@@ -21,7 +21,10 @@ import Head from "./components/Head";
 
 export default function Profile() {
   return (
-    <div className="d-flex flex-lg-row main">
+    <div
+      className="d-flex flex-lg-row main"
+      onLoad={() => window.scrollTo(0, 0)}
+    >
       <Head
         title="Profile"
         description="This is a portfolio website of Full stack MERN Web developer Idris Vohra."

@@ -985,7 +985,8 @@ pre.ql-syntax {
     flex-direction: column;
     position: relative;
 }
-.favourite-card .top-section a{
+
+.favourite-card .top-section a {
     background-color: transparent !important;
 }
 
@@ -1044,12 +1045,14 @@ pre.ql-syntax {
     position: relative;
     z-index: 6;
 }
-.main-logo{
+
+.main-logo {
     position: absolute;
     top: -12px;
     width: 60px;
     height: 30px;
 }
+
 .favourite-card .top-section .icons .logo .top-section {
     height: 100%;
 }
@@ -1069,12 +1072,14 @@ pre.ql-syntax {
     text-align: center;
     letter-spacing: 2px;
 }
-.favourite-card .project-img{
+
+.favourite-card .project-img {
     width: 100%;
     position: absolute;
     height: 100%;
     object-fit: cover;
 }
+
 .favourite-card .bottom-section .sub-text {
     display: flex;
     flex-direction: column;
@@ -1129,15 +1134,21 @@ pre.ql-syntax {
     margin: 0;
 }
 
-.card.project a {
+.card.project .card-header a,
+.card.project .card-body a {
     color: var(--primary-clr) !important;
     display: block;
     font-size: 28px;
     background-color: transparent;
     transition: all .6s ease;
 }
-
-.card.project a:hover {
+a[title]{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.card.project .card-header a:hover,
+.card.project .card-body a:hover {
     background-color: var(--tertiary-clr);
 }
 
@@ -1167,9 +1178,11 @@ pre.ql-syntax {
     grid-template-columns: auto auto auto;
     gap: 20px;
 }
-.input-group{
-    width:unset;
+
+.input-group {
+    width: unset;
 }
+
 .search-input {
     width: 100%;
     padding: 0 1rem;

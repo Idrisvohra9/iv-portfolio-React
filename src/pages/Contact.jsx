@@ -9,7 +9,7 @@ import Head from "./components/Head";
 
 export default function Contact() {
   return (
-    <div className="main">
+    <div className="main" onLoad={() => window.scrollTo(0, 0)}>
       <Head
         title="Contact"
         description="Contact Options page of Idris Vohra"

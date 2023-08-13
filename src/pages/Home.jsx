@@ -24,7 +24,6 @@ export default function Header() {
         // If small screen:
         if (document.querySelector(".header-sm")?.checkVisibility()) {
           document.querySelector(".layer1").style.top = -20 - value + "px";
-          // document.querySelector(".layer2").style.top = -20 + value + "px";
           document.querySelector(".moon").style.left = -40 + value + "px";
           document.querySelector(".birds").style.left = 0 + value + "px";
           document.querySelector(".birds").style.bottom = 0 + value + "px";
